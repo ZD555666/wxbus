@@ -1,0 +1,22 @@
+<view>
+  <van-search
+  value="{{ value }}"
+  placeholder="站点、线路"
+  use-action-slot
+  bind:change="onSearch" 
+  >
+  <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+  <view class="histroy">
+    <text wx:if="{{searchValue == ''}}">搜索历史</text>
+  </view>
+  <view>
+    <van-cell-group wx:for="{{roadList}}" wx:for-index='key'>
+      <van-cell wx:if="{{item != null}}" title="{{item}} 开往 {{key}}" bind:click="onClick" 
+      data-value="{{item}}" data-key="{{key}}"/>
+      <van-cell wx:elif="{{item == null}}"  title="{{key}}" bind:click="onClick" 
+      data-value="{{item}}" data-key="{{key}}"/>
+    </van-cell-group>
+  </view>
+
+</view>

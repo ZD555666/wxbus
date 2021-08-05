@@ -1,0 +1,13 @@
+#head{
+  width: 100%;
+  text-align: center;
+}
+.toLogin {
+  font-size: 22px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.toLogin::after {
+  border: none;
+}

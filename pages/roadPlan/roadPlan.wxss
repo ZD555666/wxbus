@@ -1,0 +1,84 @@
+page{
+  height: 100%;
+  width: 100%;
+  background-color: rgb(207, 206, 206);
+  /* position:absolute; */
+}
+.search{
+ /* width: 80%; */
+ width: 100%;
+ display:flex;
+ background-color: white;
+}
+.cell-group{
+  width: 90%;
+}
+.panel{
+  margin-top:10px ;
+  width: 96%;
+  height: 180px;
+  margin-left: 2%;
+  border-radius: 15px;
+  background-color: white;
+  border-radius: 15px;
+}
+.v{
+  padding-top: 12px;
+  margin-left: 11px;
+}
+.time{
+  margin-left: 5px;
+  font-size: 17px;
+}
+.walk{
+  margin-left: 15px;
+  font-size: 13px;
+}
+.v1{
+  margin-top: 8px;
+  margin-left: 10px;
+  font-size: 13px;
+  color: rgb(146, 149, 151);
+}
+.v2{
+  display:flex;
+  flex-wrap: wrap;
+}
+.v3{
+  margin-top: 8px;
+  margin-left: 10px;
+  height: 23px;
+  width: 300px;
+  border: rgb(154, 230, 185) 1px solid;
+  display: flex;
+  font-size: 12px;
+}
+.bus{
+  margin-top: 8px;
+  margin-left: 10px;
+  height: 23px;
+  width: 70px;
+  border: rgb(60, 162, 245) 2px solid;
+  border-radius: 15px;
+  color:rgb(60, 162, 245) ;
+  display: flex;
+}
+.busPng{
+  margin-top: 4px;
+  margin-left: 7px;
+  height: 15px;
+  width: 17px;
+}
+.t1{
+  margin-top: 3px;
+  margin-left: 2px;
+  font-size: 12px;
+}
+.t2{
+  margin-top: 3.5px;
+  margin-left: 5px;
+}
+.t3{
+  margin-top: 3.5px;
+  margin-left: 12px;
+}

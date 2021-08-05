@@ -1,0 +1,26 @@
+page{
+  height: 100%;
+}
+.one {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.two{
+  margin-left: 10px;
+  font-size: 14px;
+}
+.three{
+  margin-top: 8px;
+  background-color: rgb(248, 131, 53);
+  height: 35px;
+  width: 100%;
+  font-size: 14px;
+}
+.time{
+  position:absolute;
+  top: 8.7%;
+  left: 3%;
+  padding-bottom: 20px;
+  color: white;
+  font-size: 15px;
+}

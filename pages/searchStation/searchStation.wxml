@@ -1,0 +1,21 @@
+<view>
+  <van-search
+  value="{{ value }}"
+  placeholder="站点、地点"
+  use-action-slot
+  bind:change="onSearch" 
+  >
+  <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+  <view class="histroy">
+    <!-- <text wx:if="{{searchValue == ''}}">搜索历史</text> -->
+  </view>
+  <view>
+    <van-cell-group >
+      <van-cell wx:for="{{stationList}}" title="{{item.stationName}}" bind:click="onClick" 
+      data-value="{{item.stationName}}" data-latitude="{{item.ypoint}}" data-longitude="{{item.xpoint}}" />
+      <van-cell wx:for="{{palceList}}" title="{{item.name}}" bind:click="onClick" 
+      data-value="{{item.name}}" data-latitude="{{item.location.lat}}" data-longitude="{{item.location.lng}}" />
+    </van-cell-group>
+  </view>
+</view>

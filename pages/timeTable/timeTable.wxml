@@ -1,0 +1,22 @@
+<view>
+  <view class="one">方向：{{direction}}</view>
+  <view class="two">起点预计发车：20:20</view>
+  <view class="three"><text class="time">时刻表</text></view>
+  <view>
+    <van-collapse accordion value="{{ activeName }}" bind:change="onChange">
+    <van-collapse-item title="06:00-10:00" value="早高峰" name="1">
+      123
+    </van-collapse-item>
+    <van-collapse-item title="10:00-16:00" name="2">
+      456
+    </van-collapse-item>
+    <van-collapse-item title="16:00-20:00" value="晚高峰" name="3">
+      123
+    </van-collapse-item>
+    <van-collapse-item title="20:00-21:20" name="4">
+      456
+    </van-collapse-item>
+  </van-collapse>
+  </view>
+
+</view>

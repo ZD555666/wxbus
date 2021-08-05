@@ -1,0 +1,62 @@
+<view>
+  <view class="panel" >
+    <view class="busNo">
+      <view class="bus">
+        <image class="busPng" src="/images/bus.png"/>
+        <view class="t1">431路</view>
+      </view>
+      <image class="next" src="/images/向右.png"/>
+      <view class="bus">
+        <image class="busPng" src="/images/bus.png"/>
+        <view class="t1">431路</view>
+      </view>
+    </view>
+    <view class="v3">
+      12站  |  30分钟  |  步行约264米
+    </view>
+  </view>
+  <view class="middle"></view>
+  <view class="detail">
+    <view class="strat">
+      <image class="startImage" src="/images/start.png"/>
+      <view class="t2">围里村口站</view>
+    </view>  
+
+    <view class="walkLine">
+      <image class="walkLineImage" src="/images/虚线.png"/>
+      <view class="tWalk">步行300米</view>
+      <image class="walkImage" src="/images/步行.png"/>
+    </view>  
+    
+    <view class="station">
+      <image class="stationImage" src="/images/middle.png"/>
+      <view class="tStation">夏新医院站</view>
+    </view>  
+
+    <view class="solid">
+      <view class="solidLine"></view>
+      <view>
+        <view class="newBus">431路</view>
+        <view class="solidDirection">方向：黄厝公交场站</view>
+        <view class="solidTime">最近车辆:2站 | 3分钟</view>
+      </view> 
+    </view> 
+    
+    <view class="station">
+      <image class="stationImage" src="/images/middle.png"/>
+      <view class="tStation">夏新医院站</view>
+    </view>  
+     
+    <view class="walkLine">
+      <image class="walkLineImage" src="/images/虚线.png"/>
+      <view class="tWalk">步行300米</view>
+      <image class="walkImage" src="/images/步行.png"/>
+    </view> 
+
+    <view class="strat">
+      <image class="startImage" src="/images/end.png"/>
+      <view class="t2">围里村口站</view>
+    </view>  
+
+  </view>
+</view>

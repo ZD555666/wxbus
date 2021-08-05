@@ -1,0 +1,57 @@
+
+<view >
+  <view class="first">
+    <van-panel title="方向：{{direction}}"
+    desc="首：06:00 末：22:00 ;    一票制1元" >
+      <view class="station">
+        <text>起点预计发车15:36</text>
+        <van-button class="time" plain type="primary" 
+        size="small" bind:click="goTime">时刻表</van-button>
+      </view>
+    </van-panel>
+  </view>
+
+  <view class="two"> 
+   <view class="showTime">
+      <view class="v2">
+        <view class="v3">4站:</view>
+        <view class="v4">3分钟 / 500米</view>
+      </view>
+      <!-- <view class="vv2">
+        <view class="vv3">4站:</view>
+        <view class="vv4">3分钟 / 500米</view>
+      </view> -->
+   </view>
+
+   <!-- <view class="showTime">
+      <view class="v2">
+        <view class="v3">4站:</view>
+        <view class="v4">3分钟 / 500米</view>
+      </view>
+   </view> -->
+
+  </view>
+
+  <scroll-view class="out" scroll-x >
+      <view class="bus">
+        <image class="busPng" src="/images/公交车.png"/>
+      </view>
+      <view class="road" style="{{width}}">
+        <image wx:for="{{stationList.length-1}}" class="m1" src="/images/箭头.png"/>
+      </view>
+      <view class="start">起</view>
+      <view class="end" style="{{endLeft}}">终</view>
+      <view class="end1" style="{{endLeft1}}"></view>
+      
+      <view class="number0">
+       <text class="number" wx:for="{{stationList.length}}">{{index+1}}</text>
+      </view>
+      <view class="sta">
+        <view  class="area"  wx:for="{{stationList}}">
+          <text class="te">{{item.station.stationName}}</text>
+        </view>
+      </view>
+  </scroll-view>  
+
+</view>
+

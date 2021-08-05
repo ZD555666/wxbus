@@ -1,0 +1,113 @@
+<view>
+  <view class="search">
+    <van-cell-group class="cell-group" >
+      <van-field value="{{ location }}" 
+      clearable left-icon="location" 
+      bind:click-icon="onClickIcon" 
+      bind:input="onChange"  
+      bind:focus = "focus"/>
+      
+      <van-field value="{{ toWhere }}" 
+      left-icon="location" 
+      border="{{ true }}" 
+      bind:click-icon="onClickIcon1"
+      bind:input="onChange1" 
+      bind:focus = "focus"/>
+    </van-cell-group>
+    <van-icon class="icon1" name="sort" size="20px" />
+  </view>
+  <view class="roads">
+    <van-tabs active="{{ active }}" bind:change="onChangeTar" inset>
+      <van-tab title="推荐">
+        <view class="panel" bindtap="goRoad">
+          <view class="v">
+              <text class="time">26分钟</text>
+              <text class="walk">步行:175米</text>
+            </view>
+          <view class="v1">12站 . 围里村口站上车</view>
+          <view class="v2">
+            <view class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">431路</view>
+            </view>
+          </view>
+          <view class="v3">
+            <view class="t2">431路</view>
+              <view class="t3">
+                <van-icon name="volume-o" />
+                最近车辆: 10站 | 16分钟
+              </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="时间最短">
+          <view class="panel" bindtap="goRoad">
+            <view class="v">
+              <text class="time">26分钟</text>
+              <text class="walk">步行:175米</text>
+            </view>
+          <view class="v1">12站 . 围里村口站上车</view>
+          <view class="v2">
+            <view class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">431路</view>
+            </view>
+          </view>
+          <view class="v3">
+            <view class="t2">431路</view>
+              <view class="t3">
+                <van-icon name="volume-o" />
+                最近车辆: 10站 | 16分钟
+              </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="不行少">
+          <view class="panel" bindtap="goRoad">
+            <view class="v">
+              <text class="time">26分钟</text>
+              <text class="walk">步行:175米</text>
+            </view>
+          <view class="v1">12站 . 围里村口站上车</view>
+          <view class="v2">
+            <view class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">431路</view>
+            </view>
+          </view>
+          <view class="v3">
+            <view class="t2">431路</view>
+              <view class="t3">
+                <van-icon name="volume-o" />
+                最近车辆: 10站 | 16分钟
+              </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="换乘少">
+          <view class="panel" bindtap="goRoad">
+          <view>
+            <view class="v">
+              <text class="time">26分钟</text>
+              <text class="walk">步行:175米</text>
+            </view>
+          </view>
+          <view class="v1">12站 . 围里村口站上车</view>
+          <view class="v2">
+            <view class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">431路</view>
+            </view>
+          </view>
+          <view class="v3">
+            <view class="t2">431路</view>
+              <view class="t3">
+                <van-icon name="volume-o" />
+                最近车辆: 10站 | 16分钟
+              </view>
+          </view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>
