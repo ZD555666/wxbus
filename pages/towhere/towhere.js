@@ -5,25 +5,13 @@ Component({
       this.getTabBar().setData({
         active: 1
       });
-    },
-    show: function() {
       var _this = this;
       _this.setData({
         location:app.globalData.locationValue,
         toWhere:app.globalData.toWhereValue
       })
-    //获取当前的经纬度
-    // wx.getLocation({
-    //   type: 'gcj02',
-    //   altitude:'true',
-    //   success (res) {
-    //     console.log(res)
-    //     app.globalData.locationLatitude = res.latitude
-    //     app.globalData.locationLongitude = res.longitude
-    //     app.globalData.speed = res.speed
-    //   }
-    // })
     },
+  
   },
   lifetimes: {
     attached: function() {

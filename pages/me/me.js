@@ -24,7 +24,7 @@ Component({
             })
           }
         })
-     
+
       } else {
         this.setData({
           isLogin: "登录/注册",
