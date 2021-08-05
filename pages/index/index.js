@@ -105,16 +105,18 @@ Component({
         let wxMarkerData = data.wxMarkerData;
         that.setData({
           markers: wxMarkerData,
-          latitude: wxMarkerData[0].latitude,
-          longitude: wxMarkerData[0].longitude,
+          latitude: 24.44579,
+          longitude: 118.08243,
           address: wxMarkerData[0].address,
-          cityInfo: data.originalData.result.addressComponent
+          cityInfo: {city:'厦门市'}
         });
         app.globalData.markers = wxMarkerData,
-          app.globalData.latitude = wxMarkerData[0].latitude,
-          app.globalData.longitude = wxMarkerData[0].longitude,
-          app.globalData.address = wxMarkerData[0].address,
-          app.globalData.cityInfo = data.originalData.result.addressComponent
+          // app.globalData.latitude = wxMarkerData[0].latitude,
+          // app.globalData.longitude = wxMarkerData[0].longitude,
+          // app.globalData.address = wxMarkerData[0].address,
+          // app.globalData.cityInfo = data.originalData.result.addressComponent
+          app.globalData.latitude =  24.44579,
+          app.globalData.longitude = 118.08243,
         that.queryNearStation();
       }
       BMap.regeocoding({
@@ -156,6 +158,12 @@ Component({
         currentValue: event.detail
       })
       this.queryNearStation()
+    },
+
+    toIndexSearch(){
+      wx.navigateTo({
+        url: '/pages/search/search',
+      })
     },
 
     choseStation(event) {
