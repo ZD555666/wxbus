@@ -105,18 +105,16 @@ Component({
         let wxMarkerData = data.wxMarkerData;
         that.setData({
           markers: wxMarkerData,
-          latitude: 24.44579,
-          longitude: 118.08243,
+          latitude: wxMarkerData[0].latitude,
+          longitude: wxMarkerData[0].longitude,
           address: wxMarkerData[0].address,
-          cityInfo: {city:'厦门市'}
+          cityInfo: data.originalData.result.addressComponent
         });
         app.globalData.markers = wxMarkerData,
-          // app.globalData.latitude = wxMarkerData[0].latitude,
-          // app.globalData.longitude = wxMarkerData[0].longitude,
-          // app.globalData.address = wxMarkerData[0].address,
-          // app.globalData.cityInfo = data.originalData.result.addressComponent
-          app.globalData.latitude =  24.44579,
-          app.globalData.longitude = 118.08243,
+          app.globalData.latitude = wxMarkerData[0].latitude,
+          app.globalData.longitude = wxMarkerData[0].longitude,
+          app.globalData.address = wxMarkerData[0].address,
+          app.globalData.cityInfo = data.originalData.result.addressComponent
         that.queryNearStation();
       }
       BMap.regeocoding({
