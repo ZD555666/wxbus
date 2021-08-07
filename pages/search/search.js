@@ -1,4 +1,4 @@
-
+var app = getApp()
 Page({
 
   /**
@@ -6,22 +6,45 @@ Page({
    */
   data: {
     searchValue:'',
-    roadList:[]
+    roadList:{},
+    stationData:{}
   },
-  onClick(){
+  onClick(event){
     wx.reLaunch({
-      url: '/pages/road/road',
+      url: '/pages/road/road?title='+event.currentTarget.dataset.value+
+      '&direction='+event.currentTarget.dataset.key,
     })
+  },
+  onClick1(event){
+    var _this = this;
+    wx.request({
+      url: app.globalData.zmyIp+'/wx/getStationData',
+      data:{
+        stationName:event.currentTarget.dataset.value,
+      },
+      success:reps=>{
+        _this.setData({
+          stationData:reps.data,
+        })
+        wx.reLaunch({
+          url: '/pages/siteDetail/siteDetail?stationId='+_this.data.stationData.stationId+
+          '&stationName='+_this.data.stationData.stationName+'&xPoint='+_this.data.stationData.xpoint+
+          '&yPoint='+_this.data.stationData.ypoint,
+        })
+    }
+  })
+   
   },
   onSearch(event){
     var _this = this;
-    _this.data.roadList = [];
+    _this.data.roadList = {};
     wx.request({
-      url: 'http://localhost:8080/wx/searchRoad',
+      url: app.globalData.zmyIp+'/wx/searchRoad',
       data:{
         value:event.detail,
       },
       success:reps=>{
+        console.log(reps.data)
         _this.setData({
           roadList:reps.data
         })

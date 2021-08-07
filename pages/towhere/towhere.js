@@ -24,6 +24,7 @@ Component({
   data: {
     location:'',
     toWhere:'',
+    roadPlan:[]
   },
   methods:{
     onClickIcon(){
@@ -33,6 +34,15 @@ Component({
         location:_this.data.toWhere ,
         toWhere:check
       })
+      var check0 =  app.globalData.locationValue;
+      var check1 =  app.globalData.locationLatitude;
+      var check2 =  app.globalData.locationLongitude;
+      app.globalData.locationValue = app.globalData.toWhereValue;
+      app.globalData.toWhereValue = check0;
+      app.globalData.locationLatitude = app.globalData.toWhereLatitude;
+      app.globalData.toWhereLatitude = check1;
+      app.globalData.locationLongitude = app.globalData.toWhereLongitude,
+      app.globalData.toWhereLongitude = check2;
     },
     onClickIcon1(){
       var _this = this;
@@ -47,11 +57,17 @@ Component({
         toWhereLongitude:app.globalData.toWhereLongitude,
       },
       success:reps=>{
-        // _this.setData({
-
-        // })
+        app.globalData.roadPlan = reps.data;
+        _this.setData({
+          roadPlan:reps.data
+        })
+        app.globalData.roadPlan = this.data.roadPlan;
+        wx.navigateTo({
+          url: '/pages/roadPlan/roadPlan',
+        })
         }
       })
+      
     },
     focus0(){
       wx.navigateTo({

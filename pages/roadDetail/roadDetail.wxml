@@ -3,59 +3,59 @@
     <view class="busNo">
       <view class="bus">
         <image class="busPng" src="/images/bus.png"/>
-        <view class="t1">431路</view>
+        <view class="t1">{{busno}}</view>
       </view>
-      <image class="next" src="/images/向右.png"/>
+      <!-- <image class="next" src="/images/向右.png"/>
       <view class="bus">
         <image class="busPng" src="/images/bus.png"/>
         <view class="t1">431路</view>
-      </view>
+      </view> -->
     </view>
-    <view class="v3">
-      12站  |  30分钟  |  步行约264米
+    <view class="v3" >
+      {{momeystation}}站  |  30分钟  |  步行约{{allwalk}}米
     </view>
   </view>
   <view class="middle"></view>
   <view class="detail">
     <view class="strat">
       <image class="startImage" src="/images/start.png"/>
-      <view class="t2">围里村口站</view>
+      <view class="t2">{{location}}</view>
     </view>  
 
-    <view class="walkLine">
-      <image class="walkLineImage" src="/images/虚线.png"/>
-      <view class="tWalk">步行300米</view>
-      <image class="walkImage" src="/images/步行.png"/>
+    <view class="walkLine" wx:if="{{startwalk != 0}}">
+      <image class="walkLineImage" src="/images/dotted.png"/>
+      <view class="tWalk">步行{{startwalk}}米</view>
+      <image class="walkImage" src="/images/walk.png"/>
     </view>  
     
-    <view class="station">
+    <view class="station" wx:if="{{startwalk != 0}}">
       <image class="stationImage" src="/images/middle.png"/>
-      <view class="tStation">夏新医院站</view>
+      <view class="tStation">{{startstation}}</view>
     </view>  
 
     <view class="solid">
       <view class="solidLine"></view>
       <view>
-        <view class="newBus">431路</view>
-        <view class="solidDirection">方向：黄厝公交场站</view>
-        <view class="solidTime">最近车辆:2站 | 3分钟</view>
+        <view class="newBus">{{busno}}</view>
+        <view class="solidDirection">方向：{{direction}}</view>
+        <view class="solidTime">最近车辆:0站 | 0分钟</view>
       </view> 
     </view> 
     
-    <view class="station">
-      <image class="stationImage" src="/images/middle.png"/>
-      <view class="tStation">夏新医院站</view>
+    <view class="station1" wx:if="{{endwalk != 0}}">
+      <image class="stationImage1" src="/images/middle.png"/>
+      <view class="tStation1">{{endstation}}</view>
     </view>  
      
-    <view class="walkLine">
-      <image class="walkLineImage" src="/images/虚线.png"/>
-      <view class="tWalk">步行300米</view>
-      <image class="walkImage" src="/images/步行.png"/>
+    <view class="walkLine" wx:if="{{endwalk != 0}}">
+      <image class="walkLineImage" src="/images/dotted.png"/>
+      <view class="tWalk">步行{{endwalk}}米</view>
+      <image class="walkImage" src="/images/walk.png"/>
     </view> 
 
-    <view class="strat">
+    <view class="start">
       <image class="startImage" src="/images/end.png"/>
-      <view class="t2">围里村口站</view>
+      <view class="t3">{{toWhere}}</view>
     </view>  
 
   </view>

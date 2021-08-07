@@ -17,7 +17,7 @@ App({
     latitude: '',
     longitude: '',
     address: '',
-    cityInfo: '',
+    cityInfo: {city:"厦门市"},
     userInfo: null,
     nowCity: '',
     prefix: 'http://localhost:8080',
@@ -31,8 +31,9 @@ App({
     toWhereLatitude:'',
     toWhereLongitude:'',
     speed:'',
-    // zmyIp:'http://192.168.43.236:8080',
-    zmyIp:'http://localhost:8080'
+    roadPlan:[],
+    zmyIp:'http://192.168.43.236:8080',
+    // zmyIp:'http://localhost:8080'
   },
 
 

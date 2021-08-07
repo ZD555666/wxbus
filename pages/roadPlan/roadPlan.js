@@ -5,9 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    location:'我的位置',
+    location:'',
     toWhere:'',
-    active: 1,
+    active: 0,
+    roadPlan:[],
   },
   onChangeTar(event) {
     // wx.showLoading({
@@ -15,9 +16,14 @@ Page({
     // })
     // wx.hideLoading()
   },
-  goRoad(){
+  goRoad(event){
+    console.log(event)
     wx.navigateTo({
-      url: '/pages/roadDetail/roadDetail',
+      url: '/pages/roadDetail/roadDetail?busno='+event.currentTarget.dataset.busno+
+      '&momeystation='+event.currentTarget.dataset.momeystation+'&startstation='+event.currentTarget.dataset.startstation+
+      '&startwalk='+event.currentTarget.dataset.startwalk+'&endwalk='+event.currentTarget.dataset.endwalk+
+      '&endstation='+event.currentTarget.dataset.endstation+'&direction='+event.currentTarget.dataset.direction+
+      '&allwalk='+event.currentTarget.dataset.allwalk,
     })
   },
   onClickIcon(){
@@ -52,7 +58,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
   },
 
   /**
@@ -66,7 +72,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var _this = this;
+    _this.setData({
+      location:app.globalData.locationValue,
+      toWhere:app.globalData.toWhereValue,
+      roadPlan:app.globalData.roadPlan
+    })
   },
 
   /**

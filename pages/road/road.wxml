@@ -34,10 +34,10 @@
 
   <scroll-view class="out" scroll-x >
       <view class="bus">
-        <image class="busPng" src="/images/公交车.png"/>
+        <image class="busPng" src="/images/bus1.png"/>
       </view>
       <view class="road" style="{{width}}">
-        <image wx:for="{{stationList.length-1}}" class="m1" src="/images/箭头.png"/>
+        <image wx:for="{{stationList.length-1}}" class="m1" src="/images/arrow.png"/>
       </view>
       <view class="start">起</view>
       <view class="end" style="{{endLeft}}">终</view>
