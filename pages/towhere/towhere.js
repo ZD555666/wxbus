@@ -24,7 +24,6 @@ Component({
   data: {
     location:'',
     toWhere:'',
-    roadPlan:[]
   },
   methods:{
     onClickIcon(){
@@ -45,29 +44,9 @@ Component({
       app.globalData.toWhereLongitude = check2;
     },
     onClickIcon1(){
-      var _this = this;
-    wx.request({
-      url: app.globalData.zmyIp+'/wx/getRoadPlan',
-      data:{
-        locationValue:app.globalData.locationValue,
-        toWhereValue:app.globalData.toWhereValue,
-        locationLatitude:app.globalData.locationLatitude,
-        locationLongitude:app.globalData.locationLongitude,
-        toWhereLatitude:app.globalData.toWhereLatitude,
-        toWhereLongitude:app.globalData.toWhereLongitude,
-      },
-      success:reps=>{
-        app.globalData.roadPlan = reps.data;
-        _this.setData({
-          roadPlan:reps.data
-        })
-        app.globalData.roadPlan = this.data.roadPlan;
-        wx.navigateTo({
-          url: '/pages/roadPlan/roadPlan',
-        })
-        }
+      wx.navigateTo({
+        url: '/pages/roadPlan/roadPlan',
       })
-      
     },
     focus0(){
       wx.navigateTo({

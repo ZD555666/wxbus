@@ -1,15 +1,21 @@
 <view>
   <view class="panel" >
     <view class="busNo">
-      <view class="bus">
+      <view wx:if="{{samestation == 'null'}}" class="bus">
         <image class="busPng" src="/images/bus.png"/>
         <view class="t1">{{busno}}</view>
       </view>
-      <!-- <image class="next" src="/images/向右.png"/>
-      <view class="bus">
+
+      <view wx:if="{{samestation != 'null' && samestation != 1}}" class="bus">
         <image class="busPng" src="/images/bus.png"/>
-        <view class="t1">431路</view>
-      </view> -->
+        <view class="t1">{{startbus}}</view>
+      </view>
+      <image wx:if="{{samestation != 'null' && samestation != 1}}" class="next" src="/images/right.png"/>
+      <view wx:if="{{samestation != 'null' && samestation != 1}}" class="bus">
+        <image class="busPng" src="/images/bus.png"/>
+        <view class="t1">{{endbus}}</view>
+      </view>
+
     </view>
     <view class="v3" >
       {{momeystation}}站  |  30分钟  |  步行约{{allwalk}}米
@@ -33,7 +39,7 @@
       <view class="tStation">{{startstation}}</view>
     </view>  
 
-    <view class="solid">
+    <view wx:if="{{samestation == 'null' && samestation != 1}}" class="solid">
       <view class="solidLine"></view>
       <view>
         <view class="newBus">{{busno}}</view>
@@ -41,7 +47,62 @@
         <view class="solidTime">最近车辆:0站 | 0分钟</view>
       </view> 
     </view> 
+     
+    <!--同站换乘-->
+    <view wx:if="{{samestation != 'null' && samestation != 1}}" class="solid">
+      <view class="solidLine"></view>
+      <view>
+        <view class="newBus">{{startbus}}</view>
+        <view class="solidDirection">方向：{{startdirection}}</view>
+        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+      </view> 
+    </view> 
+    <view class="station2" wx:if="{{samestation != 'null' && samestation != 1}}">
+      <image class="stationImage2" src="/images/middle.png"/>
+      <view class="tStation2">{{samestation}}</view>
+      <view class="tS">同站换乘</view>
+    </view> 
+    <view wx:if="{{samestation != 'null' && samestation != 1}}" class="solid">
+      <view class="solidLine"></view>
+      <view>
+        <view class="newBus">{{endbus}}</view>
+        <view class="solidDirection">方向：{{enddirection}}</view>
+        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+      </view> 
+    </view>
+
+    <!--非同站换乘-->
+    <view wx:if="{{middlewalk != 'null'}}" class="solid">
+      <view class="solidLine"></view>
+      <view>
+        <view class="newBus">{{startbus}}</view>
+        <view class="solidDirection">方向：{{startdirection}}</view>
+        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+      </view> 
+    </view> 
+    <view class="station2" wx:if="{{middlewalk != 'null'}}">
+      <image class="stationImage2" src="/images/middle.png"/>
+      <view class="tStation2">{{startturn}}</view>
+    </view> 
+    <view class="walkLine" wx:if="{{middlewalk != 'null'}}">
+      <image class="walkLineImage" src="/images/dotted.png"/>
+      <view class="tWalk">步行{{middlewalk}}米</view>
+      <image class="walkImage" src="/images/walk.png"/>
+    </view> 
+    <view class="station2" wx:if="{{middlewalk != 'null'}}">
+      <image class="stationImage2" src="/images/middle.png"/>
+      <view class="tStation2">{{endturn}}</view>
+    </view> 
+    <view wx:if="{{middlewalk != 'null'}}" class="solid">
+      <view class="solidLine"></view>
+      <view>
+        <view class="newBus">{{endbus}}</view>
+        <view class="solidDirection">方向：{{enddirection}}</view>
+        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+      </view> 
+    </view>
     
+
     <view class="station1" wx:if="{{endwalk != 0}}">
       <image class="stationImage1" src="/images/middle.png"/>
       <view class="tStation1">{{endstation}}</view>

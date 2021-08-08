@@ -13,6 +13,14 @@ Page({
     endwalk:'',
     direction:'',
     allwalk:'',
+    samestation:'',
+    startdirection:'',
+    enddirection:'',
+    startbus:'',
+    endbus:'',
+    middlewalk:'',
+    startturn:'',
+    endturn:'',
     location:'',
     toWhere:'',
   },
@@ -21,13 +29,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.busno)
-    console.log(options.momeystation)
-    console.log(options.startstation)
-    console.log(options.startwalk)
-    console.log(options.endstation)
-    console.log(options.endwalk)
-    console.log(options.direction)
+    console.log(5555555555555555555555)
+    console.log(options.endturn)
+    console.log(options.middlewalk)
     var _this = this;
     _this.setData({
       busno:options.busno,
@@ -38,9 +42,16 @@ Page({
       endwalk:options.endwalk,
       direction:options.direction,
       allwalk:options.allwalk,
+      samestation:options.samestation,
+      startdirection:options.startdirection,
+      enddirection:options.enddirection,
+      startbus:options.startbus,
+      endbus:options.endbus,
+      middlewalk:options.middlewalk,
+      startturn:options.startturn,
+      endturn:options.endturn,
       location:app.globalData.locationValue,
       toWhere:app.globalData.toWhereValue,
-      
     })
     
   },

@@ -115,8 +115,8 @@ Component({
           app.globalData.longitude = 118.1475328233507,
           app.globalData.address = wxMarkerData[0].address,
           app.globalData.cityInfo = {city:"厦门市"},
-          app.globalData.locationLatitude = wxMarkerData[0].latitude,
-          app.globalData.locationLongitude = wxMarkerData[0].longitude,
+          app.globalData.locationLatitude = 24.53065890842014,
+          app.globalData.locationLongitude = 118.1475328233507,
           console.log(wxMarkerData[0].longitude)
           console.log( wxMarkerData[0].latitude)
         that.queryNearStation();
