@@ -9,7 +9,7 @@
   <van-collapse-item title="{{openMapTitle}}" name="1">
     <view class="map_container">
       <map hidden="{{hideMap}}" class="map" longitude="{{nowLongitude}}" latitude="{{nowLatitude}}" scale="13"
-        show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
+        show-location="true" markers="{{markers}}" bindmarkertap="makertap" bindtap="toMap"></map>
     </view>
   </van-collapse-item>
 </van-collapse>

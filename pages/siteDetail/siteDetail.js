@@ -71,6 +71,16 @@ Page({
     })
   },
 
+  toMap() {
+    wx.openLocation({
+      latitude: parseFloat(this.data.markers[0].latitude),
+      longitude: parseFloat(this.data.markers[0].longitude),
+      // scale: 18,
+      name: this.data.clickStation,
+      // address: ''
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

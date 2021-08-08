@@ -20,8 +20,8 @@ App({
     cityInfo: '',
     userInfo: null,
     nowCity: '',
-    prefix: 'http://localhost:8080',
-    // prefix: 'http://192.168.31.49:8080'
+    // prefix: 'http://localhost:8080',
+    prefix: 'http://192.168.31.49:8080',
     // prefix: 'http://192.168.236.211:8080',
     toWhereType:'2',
     locationValue:'我的位置',
