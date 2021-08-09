@@ -33,24 +33,19 @@ Component({
         location:_this.data.toWhere ,
         toWhere:check
       })
+      var check0 =  app.globalData.locationValue;
+      var check1 =  app.globalData.locationLatitude;
+      var check2 =  app.globalData.locationLongitude;
+      app.globalData.locationValue = app.globalData.toWhereValue;
+      app.globalData.toWhereValue = check0;
+      app.globalData.locationLatitude = app.globalData.toWhereLatitude;
+      app.globalData.toWhereLatitude = check1;
+      app.globalData.locationLongitude = app.globalData.toWhereLongitude,
+      app.globalData.toWhereLongitude = check2;
     },
     onClickIcon1(){
-      var _this = this;
-    wx.request({
-      url: app.globalData.zmyIp+'/wx/getRoadPlan',
-      data:{
-        locationValue:app.globalData.locationValue,
-        toWhereValue:app.globalData.toWhereValue,
-        locationLatitude:app.globalData.locationLatitude,
-        locationLongitude:app.globalData.locationLongitude,
-        toWhereLatitude:app.globalData.toWhereLatitude,
-        toWhereLongitude:app.globalData.toWhereLongitude,
-      },
-      success:reps=>{
-        // _this.setData({
-
-        // })
-        }
+      wx.navigateTo({
+        url: '/pages/roadPlan/roadPlan',
       })
     },
     focus0(){

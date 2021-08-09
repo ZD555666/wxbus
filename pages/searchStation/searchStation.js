@@ -36,7 +36,6 @@ Page({
     })
   },
   onClick(event){
-    console.log("123456789"+this.data.type)
     app.globalData.toWhereType = this.data.type
     if(this.data.type == 0){
       app.globalData.locationValue = event.target.dataset.value

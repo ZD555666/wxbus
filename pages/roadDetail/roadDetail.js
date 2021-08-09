@@ -1,17 +1,59 @@
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    busno:'',
+    momeystation:'',
+    startstation:'',
+    startwalk:'',
+    endstation:'',
+    endwalk:'',
+    direction:'',
+    allwalk:'',
+    samestation:'',
+    startdirection:'',
+    enddirection:'',
+    startbus:'',
+    endbus:'',
+    middlewalk:'',
+    startturn:'',
+    endturn:'',
+    location:'',
+    toWhere:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(5555555555555555555555)
+    console.log(options.endturn)
+    console.log(options.middlewalk)
+    var _this = this;
+    _this.setData({
+      busno:options.busno,
+      momeystation:options.momeystation,
+      startstation:options.startstation,
+      startwalk:options.startwalk,
+      endstation:options.endstation,
+      endwalk:options.endwalk,
+      direction:options.direction,
+      allwalk:options.allwalk,
+      samestation:options.samestation,
+      startdirection:options.startdirection,
+      enddirection:options.enddirection,
+      startbus:options.startbus,
+      endbus:options.endbus,
+      middlewalk:options.middlewalk,
+      startturn:options.startturn,
+      endturn:options.endturn,
+      location:app.globalData.locationValue,
+      toWhere:app.globalData.toWhereValue,
+    })
+    
   },
 
   /**
@@ -25,7 +67,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

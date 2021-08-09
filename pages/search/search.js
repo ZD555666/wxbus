@@ -1,34 +1,50 @@
-const app = getApp()
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    searchValue: '',
-    showEmpty: false,
-    showHistory: false,
-    roadList: []
+    searchValue:'',
+    roadList:{},
+    stationData:{}
   },
-  onClick(event) {
-    // wx.reLaunch({
-    //   url: '/pages/road/road',
-    // })
-    let item = event.currentTarget.dataset.value//路
-    let key = event.currentTarget.dataset.key//站
-  },
-  onSearch(event) {
-    this.setData({
-      showHistory: event.detail.length == 0 ? true : false
+  onClick(event){
+    wx.reLaunch({
+      url: '/pages/road/road?title='+event.currentTarget.dataset.value+
+      '&direction='+event.currentTarget.dataset.key,
     })
+  },
+  onClick1(event){
+    console.log(123456)
     var _this = this;
-    _this.data.roadList = [];
     wx.request({
-      url: 'http://localhost:8080/wx/searchRoad',
-      data: {
-        value: event.detail,
+      url: app.globalData.zmyIp+'/wx/getStationData',
+      data:{
+        stationName:event.currentTarget.dataset.value,
       },
-      success: reps => {
+      success:reps=>{
+        _this.setData({
+          stationData:reps.data,
+        })
+        wx.reLaunch({
+          url: '/pages/siteDetail/siteDetail?stationId='+_this.data.stationData.stationId+
+          '&stationName='+_this.data.stationData.stationName+'&xPoint='+_this.data.stationData.xpoint+
+          '&yPoint='+_this.data.stationData.ypoint,
+        })
+    }
+  })
+   
+  },
+  onSearch(event){
+    var _this = this;
+    _this.data.roadList = {};
+    wx.request({
+      url: app.globalData.zmyIp+'/wx/searchRoad',
+      data:{
+        value:event.detail,
+      },
+      success:reps=>{
         console.log(reps.data)
         _this.setData({
           roadList: reps.data

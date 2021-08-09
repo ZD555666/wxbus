@@ -11,10 +11,10 @@
   </view>
   <view>
     <van-cell-group wx:for="{{roadList}}" wx:for-index='key'>
-      <van-cell wx:if="{{item != null}}" title="{{item}} 开往 {{key}}" bind:click="onClick" data-value="{{item}}"
-        data-key="{{key}}" />
-      <van-cell wx:elif="{{item == null}}" title="{{key}}" bind:click="onClick" data-value="{{item}}"
-        data-key="{{key}}" />
+      <van-cell wx:if="{{item != null}}" title="{{item}} 开往 {{key}}" bind:click="onClick" 
+      data-value="{{item}}" data-key="{{key}}"/>
+      <van-cell wx:elif="{{item == null}}"  title="{{key}}" bind:click="onClick1" 
+      data-value="{{key}}"/>
     </van-cell-group>
   </view>
 

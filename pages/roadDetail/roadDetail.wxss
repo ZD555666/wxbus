@@ -59,8 +59,12 @@ page{
   height: 15px;
 }
 .t2{
-  margin-top: -22.5px;
+  margin-top: -23px;
   margin-left: 40px;
+}
+.t3{
+  margin-top: -4px;
+  margin-left: 22px;
 }
 .walkLine{
   display: flex;
@@ -90,10 +94,40 @@ page{
 .stationImage{
   width: 15px;
   height: 15px;
-  margin-top: -1px;
+  margin-top: 8px;
+}
+
+.station1{
+  display:flex;
+}
+.stationImage1{
+  width: 15px;
+  height: 15px;
+  margin-top: -0.5px;
+}
+.tStation1{
+  margin-top: -5.5px;
+  margin-left: 24px;
+}
+.station2{
+  display:flex;
+}
+.stationImage2{
+  width: 15px;
+  height: 15px;
+  margin-top: -1.5px;
+}
+.tS{
+  font-size: 13px;
+  margin-top: -3px;
+  margin-left: 14px;
+}
+.tStation2{
+  margin-top: -6px;
+  margin-left: 24px;
 }
 .tStation{
-  margin-top: -4.5px;
+  margin-top: 3px;
   margin-left: 24px;
 }
 .solid{
@@ -104,7 +138,7 @@ page{
   height: 115px;
   background-color: rgb(90, 164, 233);
   margin-left: 3.5px;
-  margin-top: -4px;
+  margin-top: -3px;
 }
 .newBus{
   margin-top: 25px;

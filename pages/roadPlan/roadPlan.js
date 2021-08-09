@@ -5,23 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    location:'我的位置',
+    location:'',
     toWhere:'',
-    active: 1,
+    active: 0,
+    roadPlan:[],
   },
   onChangeTar(event) {
-    // wx.showLoading({
-    //   title: '加载中',
-    // })
-    // wx.hideLoading()
-  },
-  goRoad(){
-    wx.navigateTo({
-      url: '/pages/roadDetail/roadDetail',
+    this.setData({
+      active:event.detail
     })
   },
-  onClickIcon(){
-    var _this = this;
+  goRoad(event){
+    console.log(event.currentTarget.dataset.endturn)
+    wx.navigateTo({
+      url: '/pages/roadDetail/roadDetail?busno='+event.currentTarget.dataset.busno+
+      '&momeystation='+event.currentTarget.dataset.momeystation+'&startstation='+event.currentTarget.dataset.startstation+
+      '&startwalk='+event.currentTarget.dataset.startwalk+'&endwalk='+event.currentTarget.dataset.endwalk+
+      '&endstation='+event.currentTarget.dataset.endstation+'&direction='+event.currentTarget.dataset.direction+
+      '&allwalk='+event.currentTarget.dataset.allwalk+'&samestation='+event.currentTarget.dataset.samestation+
+      '&startdirection='+event.currentTarget.dataset.startdirection+'&enddirection='+event.currentTarget.dataset.enddirection+
+      '&startbus='+event.currentTarget.dataset.startbus+'&endbus='+event.currentTarget.dataset.endbus+
+      '&middlewalk='+event.currentTarget.dataset.middlewalk+'&startturn='+event.currentTarget.dataset.startturn+
+      '&endturn='+event.currentTarget.dataset.endturn,
+    })
+  },
+  onClickIcon(){t
+    var _this = this;t
     var check =_this.data.location;
     _this.setData({
       location:_this.data.toWhere ,
@@ -52,7 +61,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '加载中',
+    })
+    var _this = this;
+    console.log(123)
+    wx.request({
+      url: app.globalData.zmyIp+'/wx/getRoadPlan',
+      data:{
+        locationValue:app.globalData.locationValue,
+        toWhereValue:app.globalData.toWhereValue,
+        locationLatitude:app.globalData.locationLatitude,
+        locationLongitude:app.globalData.locationLongitude,
+        toWhereLatitude:app.globalData.toWhereLatitude,
+        toWhereLongitude:app.globalData.toWhereLongitude,
+      },
+      success:reps=>{
+        _this.setData({
+          roadPlan:reps.data
+        })
+        wx.hideLoading()
+        }
+      })
   },
 
   /**
@@ -66,7 +96,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var _this = this;
+    _this.setData({
+      location:app.globalData.locationValue,
+      toWhere:app.globalData.toWhereValue,
+    })
   },
 
   /**
