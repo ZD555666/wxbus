@@ -24,7 +24,7 @@ Page({
     var _this = this;
     _this.data.roadList = [];
     wx.request({
-      url: 'http://localhost:8080/wx/searchRoad',
+      url: app.globalData.prefix + '/wx/searchRoad',
       data: {
         value: event.detail,
       },
