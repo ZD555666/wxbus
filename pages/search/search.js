@@ -47,16 +47,50 @@ Page({
       success:reps=>{
         console.log(reps.data)
         _this.setData({
-          roadList:reps.data
+          roadList: reps.data
         })
+      },
+    })
+  },
+
+  putHistory() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/putHistory',
+      method: 'POST',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid,
+        parm: ''
+      },
+      success: res => {
+
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+  queryHistory() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/queryHistory',
+      method: 'POST',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid
+      },
+      success: res => {
+        console.log(res)
+        if (res.data.length == 0) {
+          this.setData({
+            showEmpty: true
+          })
+        } else {
+          this.setData({
+            showHistory: true
+          })
+        }
+      }
+    })
+  },
+
+  onLoad: function (options) {
+    this.queryHistory()
   },
 
   /**
