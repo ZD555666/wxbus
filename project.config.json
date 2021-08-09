@@ -41,7 +41,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.18.1",
   "appid": "wxf881ad7f711270e6",
-  "projectname": "weChatBus",
+  "projectname": "webus",
   "debugOptions": {
     "hidedInDevtools": []
   },

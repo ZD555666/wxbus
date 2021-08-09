@@ -105,16 +105,20 @@ Component({
         let wxMarkerData = data.wxMarkerData;
         that.setData({
           markers: wxMarkerData,
-          latitude: wxMarkerData[0].latitude,
-          longitude: wxMarkerData[0].longitude,
+          latitude: 24.53065890842014,
+          longitude: 118.1475328233507,
           address: wxMarkerData[0].address,
-          cityInfo: data.originalData.result.addressComponent
+          cityInfo: {city:"厦门市"}
         });
         app.globalData.markers = wxMarkerData,
-          app.globalData.latitude = wxMarkerData[0].latitude,
-          app.globalData.longitude = wxMarkerData[0].longitude,
+          app.globalData.latitude = 24.53065890842014,
+          app.globalData.longitude = 118.1475328233507,
           app.globalData.address = wxMarkerData[0].address,
-          app.globalData.cityInfo = data.originalData.result.addressComponent
+          app.globalData.cityInfo = {city:"厦门市"},
+          app.globalData.locationLatitude = 24.53065890842014,
+          app.globalData.locationLongitude = 118.1475328233507,
+          console.log(wxMarkerData[0].longitude)
+          console.log( wxMarkerData[0].latitude)
         that.queryNearStation();
       }
       BMap.regeocoding({
@@ -126,7 +130,7 @@ Component({
 
     queryNearStation() {
       wx.request({
-        url: app.globalData.prefix + '/wx/queryNearStation',
+        url: app.globalData.zmyIp + '/wx/queryNearStation',
         method: 'POST',
         data: {
           longitude: this.data.longitude,

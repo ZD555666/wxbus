@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/chooseCity/chooseCity",
     "pages/roadDetail/roadDetail",
     "pages/roadPlan/roadPlan",
     "pages/towhere/towhere",

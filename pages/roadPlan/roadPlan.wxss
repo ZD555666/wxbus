@@ -16,7 +16,7 @@ page{
 .panel{
   margin-top:10px ;
   width: 96%;
-  height: 180px;
+  height: 145px;
   margin-left: 2%;
   border-radius: 15px;
   background-color: white;
@@ -36,7 +36,7 @@ page{
 }
 .v1{
   margin-top: 8px;
-  margin-left: 10px;
+  margin-left: 15px;
   font-size: 13px;
   color: rgb(146, 149, 151);
 }
@@ -62,6 +62,12 @@ page{
   border-radius: 15px;
   color:rgb(60, 162, 245) ;
   display: flex;
+}
+.next{
+  height: 17px;
+  width: 17px;
+  margin-top: 15px;
+  margin-left: 10px;
 }
 .busPng{
   margin-top: 4px;

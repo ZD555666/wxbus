@@ -17,7 +17,7 @@ App({
     latitude: '',
     longitude: '',
     address: '',
-    cityInfo: '',
+    cityInfo: {city:"厦门市"},
     userInfo: null,
     nowCity: '',
     // prefix: 'http://localhost:8080',
