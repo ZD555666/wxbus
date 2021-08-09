@@ -65,6 +65,7 @@ Page({
       title: '加载中',
     })
     var _this = this;
+    console.log(123)
     wx.request({
       url: app.globalData.zmyIp+'/wx/getRoadPlan',
       data:{

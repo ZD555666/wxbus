@@ -16,6 +16,7 @@ Page({
     })
   },
   onClick1(event){
+    console.log(123456)
     var _this = this;
     wx.request({
       url: app.globalData.zmyIp+'/wx/getStationData',
