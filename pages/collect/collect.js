@@ -19,7 +19,7 @@ Page({
     console.log(detail)
     wx.navigateTo({
       url: '/pages/siteDetail/siteDetail?stationId=' +
-      detail.id + '&stationName=' + detail.text + '&xPoint=' + detail.xPoint + '&yPoint=' + detail.yPoint + "&cityName=" + detail.cityName,
+      detail.id + '&stationName=' + detail.text + '&xPoint=' + detail.xpoint + '&yPoint=' + detail.ypoint + "&cityName=" + detail.cityName,
     })
 
   },

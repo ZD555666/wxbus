@@ -1,38 +1,80 @@
-
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    searchValue:'',
-    roadList:[]
+    searchValue: '',
+    showEmpty: false,
+    showHistory: false,
+    roadList: []
   },
-  onClick(){
-    wx.reLaunch({
-      url: '/pages/road/road',
+  onClick(event) {
+    // wx.reLaunch({
+    //   url: '/pages/road/road',
+    // })
+    let item = event.currentTarget.dataset.value//路
+    let key = event.currentTarget.dataset.key//站
+  },
+  onSearch(event) {
+    this.setData({
+      showHistory: event.detail.length == 0 ? true : false
     })
-  },
-  onSearch(event){
     var _this = this;
     _this.data.roadList = [];
     wx.request({
       url: 'http://localhost:8080/wx/searchRoad',
-      data:{
-        value:event.detail,
+      data: {
+        value: event.detail,
       },
-      success:reps=>{
+      success: reps => {
+        console.log(reps.data)
         _this.setData({
-          roadList:reps.data
+          roadList: reps.data
         })
+      },
+    })
+  },
+
+  putHistory() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/putHistory',
+      method: 'POST',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid,
+        parm: ''
+      },
+      success: res => {
+
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+  queryHistory() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/queryHistory',
+      method: 'POST',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid
+      },
+      success: res => {
+        console.log(res)
+        if (res.data.length == 0) {
+          this.setData({
+            showEmpty: true
+          })
+        } else {
+          this.setData({
+            showHistory: true
+          })
+        }
+      }
+    })
+  },
+
+  onLoad: function (options) {
+    this.queryHistory()
   },
 
   /**
