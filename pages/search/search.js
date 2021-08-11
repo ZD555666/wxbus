@@ -10,6 +10,7 @@ Page({
     stationData:{}
   },
   onClick(event){
+    
     wx.reLaunch({
       url: '/pages/road/road?title='+event.currentTarget.dataset.value+
       '&direction='+event.currentTarget.dataset.key,

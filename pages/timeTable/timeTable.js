@@ -1,4 +1,4 @@
-
+var app = getApp();
 Page({
 
   /**
@@ -6,7 +6,10 @@ Page({
    */
   data: {
     activeName: '',
-    direction:''
+    direction:'',
+    title:'',
+    timeList:[],
+    timeQuantum:[]
   },
   onChange(event) {
     this.setData({
@@ -18,8 +21,10 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      direction:options.direction
+      direction:options.direction,
+      title:options.title
     })
+    
   },
 
   /**
@@ -33,7 +38,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var _this = this;
+    wx.request({
+      url: app.globalData.zmyIp+'/wx/getTimeTable',
+      data:{
+        busNo:_this.data.title,
+      },
+      success:reps=>{
+        console.log(reps.data)
+        _this.setData({
+          timeQuantum:reps.data,
+        })
+      }
+    })
+    wx.request({
+      url: app.globalData.zmyIp+'/wx/getTimes',
+      data:{
+        busNo:_this.data.title,
+      },
+      success:reps=>{
+        _this.setData({
+          timeList:reps.data,
+        })
+      }
+    })
   },
 
   /**

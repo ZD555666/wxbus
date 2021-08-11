@@ -6,12 +6,12 @@
         <view class="t1">{{busno}}</view>
       </view>
 
-      <view wx:if="{{samestation != 'null' && samestation != 1}}" class="bus">
+      <view wx:if="{{samestation != 'null' }}" class="bus">
         <image class="busPng" src="/images/bus.png"/>
         <view class="t1">{{startbus}}</view>
       </view>
-      <image wx:if="{{samestation != 'null' && samestation != 1}}" class="next" src="/images/right.png"/>
-      <view wx:if="{{samestation != 'null' && samestation != 1}}" class="bus">
+      <image wx:if="{{samestation != 'null'}}" class="next" src="/images/right.png"/>
+      <view wx:if="{{samestation != 'null' }}" class="bus">
         <image class="busPng" src="/images/bus.png"/>
         <view class="t1">{{endbus}}</view>
       </view>
