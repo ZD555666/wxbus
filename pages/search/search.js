@@ -24,6 +24,7 @@ Page({
         stationName:event.currentTarget.dataset.value,
       },
       success:reps=>{
+        console.log(reps.data)
         _this.setData({
           stationData:reps.data,
         })

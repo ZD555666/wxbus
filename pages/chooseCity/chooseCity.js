@@ -1,9 +1,9 @@
 // 引入SDK核心类
 var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
- 
+
 // 实例化API核心类
 var qqmapsdk = new QQMapWX({
-    key: 'IOWBZ-YADWV-4E3P4-U3UP3-JC4YH-BEFPO' 
+  key: 'IOWBZ-YADWV-4E3P4-U3UP3-JC4YH-BEFPO'
 });
 
 Page({
@@ -11,14 +11,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cityList:[],
-    nowCity:'',
+    cityList: [],
+    nowCity: '',
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -26,25 +26,24 @@ Page({
    */
   onReady: function () {
     var _this = this;
-    var myIp ;
+    var myIp;
     wx.request({
       url: 'https://pv.sohu.com/cityjson?ie=utf-8',
-      success:reps=>{
+      success: reps => {
         var aaa = reps.data.split(' ');
-        var bbb=aaa[4]
-        var ccc = bbb.replace('"','')
+        var bbb = aaa[4]
+        var ccc = bbb.replace('"', '')
         var ddd = ccc.replace('"', '')
         var ip = ddd.replace(',', '')
         myIp = ip;
         console.log(myIp);
         wx.request({
-          url: "http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip="+myIp+"&coor=bd09ll",
-          success:reps=>{
+          url: "https://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip=" + myIp + "&coor=bd09ll",
+          success: reps => {
             console.log(reps.data)
             console.log(myIp)
-            console.log("http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip="+myIp+"&coor=bd09ll")
             _this.setData({
-              nowCity:reps.data.content.address_detail.city
+              nowCity: reps.data.content.address_detail.city
             })
           }
         })
@@ -59,15 +58,15 @@ Page({
     var _this = this;
     //调用获取城市列表接口
     qqmapsdk.getCityList({
-      success: function(res) {//成功后的回调
+      success: function (res) {//成功后的回调
         _this.setData({
-          cityList:res.result[1]
+          cityList: res.result[1]
         })
       },
-      fail: function(error) {
+      fail: function (error) {
         console.error(error);
       },
-      complete: function(res) {
+      complete: function (res) {
         console.log(res);
       }
     })

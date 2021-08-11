@@ -19,7 +19,7 @@ Page({
         value:event.detail,
       },
       success:reps=>{
-        console.log(reps.data)
+        console.log("===>",reps.data)
         _this.setData({
           stationList:reps.data,
         })

@@ -105,18 +105,18 @@ Component({
         let wxMarkerData = data.wxMarkerData;
         that.setData({
           markers: wxMarkerData,
-          latitude: 24.53065890842014,
-          longitude: 118.1475328233507,
+          latitude: wxMarkerData[0].latitude,
+          longitude: wxMarkerData[0].longitude,
           address: wxMarkerData[0].address,
-          cityInfo: {city:"厦门市"}
+          cityInfo: data.originalData.result.addressComponent
         });
         app.globalData.markers = wxMarkerData,
-          app.globalData.latitude = 24.53065890842014,
-          app.globalData.longitude = 118.1475328233507,
+          app.globalData.latitude = wxMarkerData[0].latitude,
+          app.globalData.longitude = wxMarkerData[0].longitude,
           app.globalData.address = wxMarkerData[0].address,
           app.globalData.cityInfo = {city:"厦门市"},
-          app.globalData.locationLatitude = 24.53065890842014,
-          app.globalData.locationLongitude = 118.1475328233507,
+          app.globalData.locationLatitude = wxMarkerData[0].latitude,
+          app.globalData.locationLongitude = wxMarkerData[0].longitude,
           console.log(wxMarkerData[0].longitude)
           console.log( wxMarkerData[0].latitude)
         that.queryNearStation();
