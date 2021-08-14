@@ -14,7 +14,22 @@ Page({
     markers: [],
     stationXpoint: '',
     stationYpoint: '',
-    hideMap: true
+    hideMap: true,
+    isPositive: '正方向',
+    checked: true,
+    direction: '',
+    timers: '',
+    time: 500
+  },
+
+  changeDirection({ detail }) {
+    console.log(detail)
+    this.setData({
+      direction: detail == true ? 0 : 1,
+      checked: detail,
+      isPositive: detail == true ? '正方向' : '反方向'
+    });
+    this.queryDetail();
   },
 
   onChange(event) {
@@ -27,12 +42,22 @@ Page({
   },
 
   queryDetail() {
+    clearInterval(this.data.timers)
+    this.queryDetailFun();
+    var that = this;
+    this.data.timers = setInterval(function () {
+      that.queryDetailFun()
+    }, 70000);
+  },
+
+  queryDetailFun(){
     wx.request({
       url: app.globalData.prefix + '/wx/queryDetail',
       method: 'POST',
       data: {
         stationId: parseInt(this.data.stationId),
-        cityName: app.globalData.cityInfo.city
+        cityName: app.globalData.cityInfo.city,
+        direction: parseInt(this.data.direction)
       },
       success: (res) => {
         console.log(res)
@@ -51,7 +76,8 @@ Page({
       data: {
         busDetailInfo: this.data.busToWhere,
         cityName: app.globalData.cityInfo.city,
-        clickStation: this.data.clickStation
+        clickStation: this.data.clickStation,
+        direction: parseInt(this.data.direction)
       },
       success: (res) => {
         console.log(res)
@@ -93,6 +119,7 @@ Page({
       nowLatitude: app.globalData.latitude,
       stationXpoint: options.xPoint,
       stationYpoint: options.yPoint,
+      direction: options.direction,
       markers: [
         {
           iconPath: "../../images/marker_red.png",
@@ -118,21 +145,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.queryDetail();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    clearInterval(this.data.timers)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.data.timers)
   },
 
   /**

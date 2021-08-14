@@ -9,13 +9,16 @@ Page({
     width:"",
     endLeft:"",
     endLeft1:"",
+    numberLeft:'margin-left:46.7px;',
     station:"",
     direction:"",
+    title:'',
     stationList:[]
   },
   goTime(){
     wx.navigateTo({
-      url: '/pages/timeTable/timeTable?direction='+this.data.direction,
+      url: '/pages/timeTable/timeTable?direction='+this.data.direction+
+      '&title='+this.data.title,
     })
   },
   /**
@@ -28,7 +31,8 @@ Page({
       title:options.title,
     })
     this.setData({
-      direction:options.direction
+      direction:options.direction,
+      title:options.title
     })
     wx.request({
       url: app.globalData.zmyIp+'/wx/getStation',

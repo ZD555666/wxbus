@@ -57,69 +57,121 @@
         </view>
       </van-tab>
       <van-tab title="时间最短">
-          <view class="panel" bindtap="goRoad">
+        <view class="panel" bindtap="goRoad" wx:for="{{roadPlan}}"
+        data-momeyStation="{{item.momeyStation}}" data-busNo="{{item.busNo}}"
+        data-startWalk="{{item.startWalk}}" data-endWalk="{{item.endWalk}}" 
+        data-startStation="{{item.startStation}}" data-endStation="{{item.endStation}}"
+        data-direction="{{item.direction}}" data-allwalk="{{item.allWalk}}" data-sameStation="{{item.sameStation}}"
+        data-startDirection="{{item.startDirection}}" data-endDirection="{{item.endDirection}}"
+        data-startBus="{{item.startBus}}"  data-endBus="{{item.endBus}}" data-middleWalk="{{item.middleWalk}}"
+        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}">
             <view class="v">
-              <text class="time">26分钟</text>
-              <text class="walk">步行:175米</text>
+              <text class="time">0分钟</text>
+              <text class="walk" wx:if="{{item.startWalk != 0 || item.endWalk != 0}}">步行:{{item.allWalk}}米</text>
             </view>
-          <view class="v1">12站 . 围里村口站上车</view>
+          <view class="v1">{{item.momeyStation}}站 . {{item.startStation}}</view>
           <view class="v2">
-            <view class="bus">
+            <view wx:if="{{item.sameStation == null}}" class="bus">
               <image class="busPng" src="/images/bus.png"/>
-              <view class="t1">431路</view>
+              <view class="t1">{{item.busNo}}</view>
             </view>
+
+            <view wx:if="{{item.sameStation != null}}" class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">{{item.startBus}}</view>
+            </view>
+            <image wx:if="{{item.sameStation != null}}" class="next" src="/images/right.png"/>
+            <view wx:if="{{item.sameStation != null}}" class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">{{item.endBus}}</view>
+            </view>
+
           </view>
           <view class="v3">
-            <view class="t2">431路</view>
+            <view class="t2">{{item.busNo}}</view>
               <view class="t3">
                 <van-icon name="volume-o" />
-                最近车辆: 10站 | 16分钟
+                最近车辆: {{item.momeyStation}}站 | 0分钟
               </view>
           </view>
         </view>
       </van-tab>
       <van-tab title="步行少">
-          <view class="panel" bindtap="goRoad">
+        <view class="panel" bindtap="goRoad" wx:for="{{roadPlan}}" wx:if="{{item.lessWalk == 'lessWalk'}}"
+        data-momeyStation="{{item.momeyStation}}" data-busNo="{{item.busNo}}"
+        data-startWalk="{{item.startWalk}}" data-endWalk="{{item.endWalk}}" 
+        data-startStation="{{item.startStation}}" data-endStation="{{item.endStation}}"
+        data-direction="{{item.direction}}" data-allwalk="{{item.allWalk}}" data-sameStation="{{item.sameStation}}"
+        data-startDirection="{{item.startDirection}}" data-endDirection="{{item.endDirection}}"
+        data-startBus="{{item.startBus}}"  data-endBus="{{item.endBus}}" data-middleWalk="{{item.middleWalk}}"
+        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}">
             <view class="v">
-              <text class="time">26分钟</text>
-              <text class="walk">步行:175米</text>
+              <text class="time">0分钟</text>
+              <text class="walk" wx:if="{{item.startWalk != 0 || item.endWalk != 0}}">步行:{{item.allWalk}}米</text>
             </view>
-          <view class="v1">12站 . 围里村口站上车</view>
+          <view class="v1">{{item.momeyStation}}站 . {{item.startStation}}</view>
           <view class="v2">
-            <view class="bus">
+            <view wx:if="{{item.sameStation == null}}" class="bus">
               <image class="busPng" src="/images/bus.png"/>
-              <view class="t1">431路</view>
+              <view class="t1">{{item.busNo}}</view>
             </view>
+
+            <view wx:if="{{item.sameStation != null}}" class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">{{item.startBus}}</view>
+            </view>
+            <image wx:if="{{item.sameStation != null}}" class="next" src="/images/right.png"/>
+            <view wx:if="{{item.sameStation != null}}" class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">{{item.endBus}}</view>
+            </view>
+
           </view>
           <view class="v3">
-            <view class="t2">431路</view>
+            <view class="t2">{{item.busNo}}</view>
               <view class="t3">
                 <van-icon name="volume-o" />
-                最近车辆: 10站 | 16分钟
+                最近车辆: {{item.momeyStation}}站 | 0分钟
               </view>
           </view>
         </view>
       </van-tab>
       <van-tab title="换乘少">
-          <view class="panel" bindtap="goRoad">
-          <view>
+        <view class="panel" bindtap="goRoad" wx:for="{{roadPlan}}" wx:if="{{itme.lessTurn == lessTurn}}"
+        data-momeyStation="{{item.momeyStation}}" data-busNo="{{item.busNo}}"
+        data-startWalk="{{item.startWalk}}" data-endWalk="{{item.endWalk}}" 
+        data-startStation="{{item.startStation}}" data-endStation="{{item.endStation}}"
+        data-direction="{{item.direction}}" data-allwalk="{{item.allWalk}}" data-sameStation="{{item.sameStation}}"
+        data-startDirection="{{item.startDirection}}" data-endDirection="{{item.endDirection}}"
+        data-startBus="{{item.startBus}}"  data-endBus="{{item.endBus}}" data-middleWalk="{{item.middleWalk}}"
+        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}">
             <view class="v">
-              <text class="time">26分钟</text>
-              <text class="walk">步行:175米</text>
+              <text class="time">0分钟</text>
+              <text class="walk" wx:if="{{item.startWalk != 0 || item.endWalk != 0}}">步行:{{item.allWalk}}米</text>
             </view>
-          </view>
-          <view class="v1">12站 . 围里村口站上车</view>
+          <view class="v1">{{item.momeyStation}}站 . {{item.startStation}}</view>
           <view class="v2">
-            <view class="bus">
+            <view wx:if="{{item.sameStation == null}}" class="bus">
               <image class="busPng" src="/images/bus.png"/>
-              <view class="t1">431路</view>
+              <view class="t1">{{item.busNo}}</view>
             </view>
+
+            <view wx:if="{{item.sameStation != null}}" class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">{{item.startBus}}</view>
+            </view>
+            <image wx:if="{{item.sameStation != null}}" class="next" src="/images/right.png"/>
+            <view wx:if="{{item.sameStation != null}}" class="bus">
+              <image class="busPng" src="/images/bus.png"/>
+              <view class="t1">{{item.endBus}}</view>
+            </view>
+
           </view>
           <view class="v3">
-            <view class="t2">431路</view>
+            <view class="t2">{{item.busNo}}</view>
               <view class="t3">
                 <van-icon name="volume-o" />
-                最近车辆: 10站 | 16分钟
+                最近车辆: {{item.momeyStation}}站 | 0分钟
               </view>
           </view>
         </view>

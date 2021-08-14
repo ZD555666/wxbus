@@ -5,65 +5,126 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchValue:'',
-    roadList:{},
-    stationData:{}
+    searchValue: '',
+    roadList: {},
+    stationData: {},
+    wxHistories: []
   },
-  onClick(event){
-    wx.reLaunch({
-      url: '/pages/road/road?title='+event.currentTarget.dataset.value+
-      '&direction='+event.currentTarget.dataset.key,
+
+  toRoad(event) {
+    console.log(event)
+    wx.navigateTo({
+      url: '/pages/road/road?title=' + event.currentTarget.dataset.busno +
+        '&direction=' + event.currentTarget.dataset.endstation,
     })
   },
-  onClick1(event){
+
+  toSiteDetail(event) {
+    wx.navigateTo({
+      url: '/pages/siteDetail/siteDetail?stationId=' + event.currentTarget.dataset.stationid +
+        '&stationName=' + event.currentTarget.dataset.stationname + '&xPoint=' + event.currentTarget.dataset.xpoint +
+        '&yPoint=' + event.currentTarget.dataset.ypoint,
+    })
+  },
+
+  delHistory() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/delHistory',
+      method: "POST",
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid,
+        cityName: app.globalData.cityInfo.city
+      },
+      success: res => {
+        console.log(res.data)
+        this.setData({
+          wxHistories:[]
+        })
+      }
+    })
+  },
+
+  onClick(event) {
+    this.putHistory(event.currentTarget.dataset.key, event.currentTarget.dataset.value);
+    wx.reLaunch({
+      url: '/pages/road/road?title=' + event.currentTarget.dataset.value +
+        '&direction=' + event.currentTarget.dataset.key,
+    })
+
+  },
+  onClick1(event) {
     console.log(123456)
     var _this = this;
     wx.request({
-      url: app.globalData.zmyIp+'/wx/getStationData',
-      data:{
-        stationName:event.currentTarget.dataset.value,
+      url: app.globalData.zmyIp + '/wx/getStationData',
+      data: {
+        stationName: event.currentTarget.dataset.value,
       },
-      success:reps=>{
+      success: reps => {
         console.log(reps.data)
         _this.setData({
-          stationData:reps.data,
+          stationData: reps.data,
         })
         wx.reLaunch({
-          url: '/pages/siteDetail/siteDetail?stationId='+_this.data.stationData.stationId+
-          '&stationName='+_this.data.stationData.stationName+'&xPoint='+_this.data.stationData.xpoint+
-          '&yPoint='+_this.data.stationData.ypoint,
+          url: '/pages/siteDetail/siteDetail?stationId=' + _this.data.stationData.stationId +
+            '&stationName=' + _this.data.stationData.stationName + '&xPoint=' + _this.data.stationData.xpoint +
+            '&yPoint=' + _this.data.stationData.ypoint,
         })
-    }
-  })
-   
+        this.putHistory1();
+      }
+    })
+
   },
-  onSearch(event){
+  onSearch(event) {
+    console.log("===>>>"+event.detail)
     var _this = this;
     _this.data.roadList = {};
     wx.request({
-      url: app.globalData.zmyIp+'/wx/searchRoad',
-      data:{
-        value:event.detail,
+      url: app.globalData.zmyIp + '/wx/searchRoad',
+      data: {
+        value: event.detail,
       },
-      success:reps=>{
+      success: reps => {
         console.log(reps.data)
         _this.setData({
-          roadList: reps.data
+          showEmpty: false,
+          roadList: reps.data,
+          showHistory: event.detail == '' ? true : false
         })
       },
     })
   },
 
-  putHistory() {
+  putHistory(stationName, busNo) {
     wx.request({
       url: app.globalData.prefix + '/wx/putHistory',
       method: 'POST',
       data: {
         opId: wx.getStorageSync("loginUserInfo").openid,
-        parm: ''
+        endStation: stationName,
+        busNo: busNo,
+        cityName: app.globalData.cityInfo.city
       },
       success: res => {
+        console.log(res)
+      }
+    })
+  },
 
+  putHistory1() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/putHistory1',
+      method: 'POST',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid,
+        stationId: this.data.stationData.stationId,
+        stationName: this.data.stationData.stationName,
+        xPoint: this.data.stationData.xpoint,
+        yPoint: this.data.stationData.ypoint,
+        cityName: app.globalData.cityInfo.city
+      },
+      success: res => {
+        console.log(res)
       }
     })
   },
@@ -73,18 +134,22 @@ Page({
       url: app.globalData.prefix + '/wx/queryHistory',
       method: 'POST',
       data: {
-        opId: wx.getStorageSync("loginUserInfo").openid
+        opId: wx.getStorageSync("loginUserInfo").openid,
+        cityName: app.globalData.cityInfo.city
       },
       success: res => {
-        console.log(res)
-        if (res.data.length == 0) {
+        console.log(res.data)
+        if (res.data.data.length == 0) {
           this.setData({
             showEmpty: true
           })
         } else {
           this.setData({
-            showHistory: true
+            showEmpty: false,
+            showHistory: true,
+            wxHistories: res.data.data
           })
+
         }
       }
     })

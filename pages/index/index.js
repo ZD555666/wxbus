@@ -49,7 +49,7 @@ Component({
     onSelectOpt(event) {
       // console.log(event.detail);
       if (event.detail.name == '收藏') this.doCollect();
-      
+
     },
 
     doCollect() {
@@ -67,6 +67,11 @@ Component({
         },
         success: (res) => {
           console.log(res)
+          wx.showToast({
+            title: res.data.msg,
+            duration: 1000,
+            icon: res.data.msg=='操作成功'?'success':'none'
+          })
           //exist
         }
       })
@@ -114,11 +119,11 @@ Component({
           app.globalData.latitude = wxMarkerData[0].latitude,
           app.globalData.longitude = wxMarkerData[0].longitude,
           app.globalData.address = wxMarkerData[0].address,
-          app.globalData.cityInfo = {city:"厦门市"},
-          app.globalData.locationLatitude = wxMarkerData[0].latitude,
+          app.globalData.cityInfo = data.originalData.result.addressComponent
+        app.globalData.locationLatitude = wxMarkerData[0].latitude,
           app.globalData.locationLongitude = wxMarkerData[0].longitude,
           console.log(wxMarkerData[0].longitude)
-          console.log( wxMarkerData[0].latitude)
+        console.log(wxMarkerData[0].latitude)
         that.queryNearStation();
       }
       BMap.regeocoding({
@@ -162,7 +167,7 @@ Component({
       this.queryNearStation()
     },
 
-    toIndexSearch(){
+    toIndexSearch() {
       wx.navigateTo({
         url: '/pages/search/search',
       })
@@ -178,7 +183,7 @@ Component({
       let yPoint = event.currentTarget.dataset.ypoint
       wx.navigateTo({
         url: '/pages/siteDetail/siteDetail?stationId=' +
-          value + '&stationName=' + name + '&xPoint=' + xPoint + '&yPoint=' + yPoint + "&cityName=" + app.globalData.cityInfo.city,
+          value + '&stationName=' + name + '&xPoint=' + xPoint + '&yPoint=' + yPoint + "&cityName=" + app.globalData.cityInfo.city + "&direction=" + 0,
       })
 
     }

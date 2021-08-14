@@ -37,14 +37,15 @@
         <image class="busPng" src="/images/bus1.png"/>
       </view>
       <view class="road" style="{{width}}">
-        <image wx:for="{{stationList.length-1}}" class="m1" src="/images/arrow.png"/>
+        <image wx:for="{{stationList.length-1}}" class="m1" st src="/images/arrow.png"/>
       </view>
       <view class="start">起</view>
       <view class="end" style="{{endLeft}}">终</view>
       <view class="end1" style="{{endLeft1}}"></view>
       
       <view class="number0">
-       <text class="number" wx:for="{{stationList.length}}">{{index+1}}</text>
+       <text class="number" wx:for="{{stationList.length}}" wx:if="{{index+1 < 10}}"  >{{index+1}}</text>
+       <text class="number"  wx:for="{{stationList.length}}" wx:if="{{index+1 >= 10}}"  style="{{numberLeft}}">{{index+1}}</text>
       </view>
       <view class="sta">
         <view  class="area"  wx:for="{{stationList}}">

@@ -5,16 +5,23 @@
   <view class="histroy">
     <van-empty wx:if="{{showEmpty}}" description="您还没有任何查询记录哦!^_^" />
     <van-cell-group inset wx:if="{{showHistory}}">
-      <view class=""></view>
-      <van-cell title="单元格" value="" clickable url=""/>
+      <van-cell title="历史记录">
+        <van-icon slot="right-icon" name="delete-o" size="20px" bind:click="delHistory"/>
+      </van-cell>
+      <block wx:for="{{wxHistories}}" wx:key='index'>
+        <van-cell wx:if="{{item.busNo!=null}}" title="{{item.busNo}} 开往 {{item.endStation}}" clickable
+          bind:click="toRoad" data-busNo="{{item.busNo}}" data-endStation="{{item.endStation}}" />
+        <van-cell wx:else title="{{item.stationName}}" clickable bind:click="toSiteDetail"
+          data-stationId="{{item.stationId}}" data-stationName="{{item.stationName}}" data-xPoint="{{item.xPoint}}"
+          data-yPoint="{{item.yPoint}}" />
+      </block>
     </van-cell-group>
   </view>
   <view>
     <van-cell-group wx:for="{{roadList}}" wx:for-index='key'>
-      <van-cell wx:if="{{item != null}}" title="{{item}} 开往 {{key}}" bind:click="onClick" 
-      data-value="{{item}}" data-key="{{key}}"/>
-      <van-cell wx:elif="{{item == null}}"  title="{{key}}" bind:click="onClick1" 
-      data-value="{{key}}"/>
+      <van-cell wx:if="{{item != null}}" title="{{item}} 开往 {{key}}" bind:click="onClick" data-value="{{item}}"
+        data-key="{{key}}" />
+      <van-cell wx:elif="{{item == null}}" title="{{key}}" bind:click="onClick1" data-value="{{key}}" />
     </van-cell-group>
   </view>
 
