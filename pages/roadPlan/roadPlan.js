@@ -26,7 +26,7 @@ Page({
       '&startdirection='+event.currentTarget.dataset.startdirection+'&enddirection='+event.currentTarget.dataset.enddirection+
       '&startbus='+event.currentTarget.dataset.startbus+'&endbus='+event.currentTarget.dataset.endbus+
       '&middlewalk='+event.currentTarget.dataset.middlewalk+'&startturn='+event.currentTarget.dataset.startturn+
-      '&endturn='+event.currentTarget.dataset.endturn,
+      '&endturn='+event.currentTarget.dataset.endturn+'&alldate='+event.currentTarget.dataset.alldate,
     })
   },
   onClickIcon(){
@@ -57,10 +57,51 @@ Page({
       toWhere:event.detail
     })
   },
+  queryTime(){
+    var that = this;
+    setInterval(function() {
+     console.log(11111)
+     wx.request({
+      url: app.globalData.zmyIp+'/wx/getRoadPlan',
+      data:{
+        locationValue:app.globalData.locationValue,
+        toWhereValue:app.globalData.toWhereValue,
+        locationLatitude:app.globalData.locationLatitude,
+        locationLongitude:app.globalData.locationLongitude,
+        toWhereLatitude:app.globalData.toWhereLatitude,
+        toWhereLongitude:app.globalData.toWhereLongitude,
+      },
+      success:reps=>{
+        that.setData({
+          roadPlan:reps.data
+        })
+        },
+      })
+   }, 50000);
+   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.queryTime();
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var _this = this;
+    _this.setData({
+      location:app.globalData.locationValue,
+      toWhere:app.globalData.toWhereValue,
+    })
     wx.showLoading({
       title: '加载中',
     })
@@ -80,26 +121,9 @@ Page({
           roadPlan:reps.data
         })
         wx.hideLoading()
-        }
+        },
       })
-  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var _this = this;
-    _this.setData({
-      location:app.globalData.locationValue,
-      toWhere:app.globalData.toWhereValue,
-    })
   },
 
   /**

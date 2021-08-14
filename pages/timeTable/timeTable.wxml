@@ -1,7 +1,7 @@
 <view>
   <view class="one">方向：{{direction}}</view>
-  <view class="two">起点预计发车：20:20</view>
-  <view class="three"><text class="time">时刻表</text></view>
+  <view class="two">起点预计发车 ：{{goStartTime}}</view>
+  <view class="three"><view class="time">时刻表</view></view>
   <view>
     <van-collapse  accordion value="{{ activeName }}" bind:change="onChange">
     <van-collapse-item wx:for="{{timeQuantum}}" title="{{item}}" name="{{index+1}}">

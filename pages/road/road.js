@@ -1,4 +1,4 @@
-// pages/road/road.js
+
 const app = getApp()
 Page({
 
@@ -13,20 +13,58 @@ Page({
     station:"",
     direction:"",
     title:'',
-    stationList:[]
+    stationList:[],
+    times:[],
+    startTime:'',
+    endTime:'',
+    realData:{},
+    goStartTime:'',
+    color:'',
+    busPlace:'left: 15px;',
+    nearStation:''
   },
   goTime(){
     wx.navigateTo({
       url: '/pages/timeTable/timeTable?direction='+this.data.direction+
-      '&title='+this.data.title,
+      '&title='+this.data.title+'&goStartTime='+this.data.goStartTime,
     })
   },
+
+  getRealData(){
+    var _this = this;
+    wx.request({
+      url: app.globalData.zmyIp+'/wx/getRealData',
+      data:{
+        busNo:_this.data.title,
+        latitude:app.globalData.latitude,
+        longitude:app.globalData.longitude,
+        direction:_this.data.direction
+      },
+      success:reps=>{
+        _this.setData({
+          realData:reps.data,
+          goStartTime:reps.data.startTime,
+          nearStation:reps.data.nearStation
+        })
+        if(reps.data.nowStation != 0){
+          _this.setData({
+            busPlace:'left: '+(15+65.5*(reps.data.nowStation - 1))+'px;'
+          })
+        }
+      }
+    })
+  },
+  queryTime(){
+    var that = this;
+    setInterval(function() {
+      that.getRealData();
+   }, 50000);
+   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var _this = this;
-    // navigationBarTitleText
     wx.setNavigationBarTitle({
       title:options.title,
     })
@@ -64,7 +102,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getRealData();
+    var _this = this;
+    wx.request({
+      url: app.globalData.zmyIp+'/wx/getStaEndTime',
+      data:{
+        busNo:_this.data.title
+      },
+      success:reps=>{
+        console.log(reps.data)
+        console.log(reps.data.length)
+        _this.setData({
+          times:reps.data,
+          startTime:_this.data.times[0],
+          endTime:_this.data.times[1],
+          startTime:reps.data[0],
+          endTime:reps.data[1],
+        })
+      }
+    })
+    _this.setData({
+      startTime:_this.data.times[0],
+      endTime:_this.data.times[1],
+    })
 
+    this.queryTime();
   },
 
   /**

@@ -9,7 +9,8 @@ Page({
     direction:'',
     title:'',
     timeList:[],
-    timeQuantum:[]
+    timeQuantum:[],
+    goStartTime:''
   },
   onChange(event) {
     this.setData({
@@ -22,7 +23,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       direction:options.direction,
-      title:options.title
+      title:options.title,
+      goStartTime:options.goStartTime
     })
     
   },
@@ -57,9 +59,11 @@ Page({
         busNo:_this.data.title,
       },
       success:reps=>{
+        console.log(reps.data)
         _this.setData({
           timeList:reps.data,
         })
+        console.log(_this.data.timeList)
       }
     })
   },

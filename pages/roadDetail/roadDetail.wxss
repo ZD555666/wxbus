@@ -141,7 +141,7 @@ page{
   margin-top: -3px;
 }
 .newBus{
-  margin-top: 25px;
+  margin-top: 32px;
   margin-left: 27px;
   width: 45px;
   height: 17px;

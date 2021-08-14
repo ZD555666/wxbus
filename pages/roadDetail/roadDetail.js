@@ -23,6 +23,7 @@ Page({
     endturn:'',
     location:'',
     toWhere:'',
+    alldate:''
   },
 
   /**
@@ -53,6 +54,7 @@ Page({
       endturn:options.endturn,
       location:app.globalData.locationValue,
       toWhere:app.globalData.toWhereValue,
+      alldate:options.alldate,
     })
     
   },

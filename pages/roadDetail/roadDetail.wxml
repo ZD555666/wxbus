@@ -18,7 +18,7 @@
 
     </view>
     <view class="v3" >
-      {{momeystation}}站  |  30分钟  |  步行约{{allwalk}}米
+      {{momeystation}}站  |  {{alldate}}分钟  |  步行约{{allwalk}}米
     </view>
   </view>
   <view class="middle"></view>
@@ -44,7 +44,7 @@
       <view>
         <view class="newBus">{{busno}}</view>
         <view class="solidDirection">方向：{{direction}}</view>
-        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+        <!-- <view class="solidTime">最近车辆:0站 | 0分钟</view> -->
       </view> 
     </view> 
      
@@ -54,7 +54,7 @@
       <view>
         <view class="newBus">{{startbus}}</view>
         <view class="solidDirection">方向：{{startdirection}}</view>
-        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+        <!-- <view class="solidTime">最近车辆:0站 | 0分钟</view> -->
       </view> 
     </view> 
     <view class="station2" wx:if="{{samestation != 'null' && samestation != 1}}">
@@ -67,7 +67,7 @@
       <view>
         <view class="newBus">{{endbus}}</view>
         <view class="solidDirection">方向：{{enddirection}}</view>
-        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+        <!-- <view class="solidTime">最近车辆:0站 | 0分钟</view> -->
       </view> 
     </view>
 
@@ -77,7 +77,7 @@
       <view>
         <view class="newBus">{{startbus}}</view>
         <view class="solidDirection">方向：{{startdirection}}</view>
-        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+        <!-- <view class="solidTime">最近车辆:0站 | 0分钟</view> -->
       </view> 
     </view> 
     <view class="station2" wx:if="{{middlewalk != 'null'}}">
@@ -98,7 +98,7 @@
       <view>
         <view class="newBus">{{endbus}}</view>
         <view class="solidDirection">方向：{{enddirection}}</view>
-        <view class="solidTime">最近车辆:0站 | 0分钟</view>
+        <!-- <view class="solidTime">最近车辆:0站 | 0分钟</view> -->
       </view> 
     </view>
     

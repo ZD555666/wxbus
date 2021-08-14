@@ -2,9 +2,9 @@
 <view >
   <view class="first">
     <van-panel title="方向：{{direction}}"
-    desc="首：06:00 末：22:00 ;    一票制1元" >
+    desc="首：{{startTime}} 末：{{endTime}} ;    一票制1元" >
       <view class="station">
-        <text>起点预计发车15:36</text>
+        <text>起点预计发车 : {{realData.startTime}}</text>
         <van-button class="time" plain type="primary" 
         size="small" bind:click="goTime">时刻表</van-button>
       </view>
@@ -13,28 +13,20 @@
 
   <view class="two"> 
    <view class="showTime">
-      <view class="v2">
-        <view class="v3">4站:</view>
-        <view class="v4">3分钟 / 500米</view>
+      <view class="v2" wx:if="{{realData.time != null}}">
+        <view class="v3">{{realData.moneyStation}}站:</view>
+        <view class="v4">{{realData.time}} / {{realData.meter}}</view>
       </view>
-      <!-- <view class="vv2">
-        <view class="vv3">4站:</view>
-        <view class="vv4">3分钟 / 500米</view>
-      </view> -->
+
+      <view class="vv2" wx:if="{{realData.time == null}}">
+        <view class="vv3">等待发车...</view>
+      </view>
    </view>
-
-   <!-- <view class="showTime">
-      <view class="v2">
-        <view class="v3">4站:</view>
-        <view class="v4">3分钟 / 500米</view>
-      </view>
-   </view> -->
-
   </view>
 
   <scroll-view class="out" scroll-x >
       <view class="bus">
-        <image class="busPng" src="/images/bus1.png"/>
+        <image class="busPng" style="{{busPlace}}" src="/images/bus1.png"/>
       </view>
       <view class="road" style="{{width}}">
         <image wx:for="{{stationList.length-1}}" class="m1" st src="/images/arrow.png"/>
@@ -49,7 +41,8 @@
       </view>
       <view class="sta">
         <view  class="area"  wx:for="{{stationList}}">
-          <text class="te">{{item.station.stationName}}</text>
+          <text class="tee" wx:if="{{item.station.stationName == nearStation}}">{{item.station.stationName}}</text>
+          <text class="te" wx:if="{{item.station.stationName != nearStation}}">{{item.station.stationName}}</text>
         </view>
       </view>
   </scroll-view>  
