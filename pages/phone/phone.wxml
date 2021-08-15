@@ -9,5 +9,5 @@
     </van-button>
   </van-field>
 </van-cell-group>
-<van-button type="primary" bind:click="sub">提交</van-button>
+<view class="btn-center"><van-button type="primary" bind:click="sub">提交</van-button></view>
 <van-notify id="van-notify" />

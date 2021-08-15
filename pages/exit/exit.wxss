@@ -1,1 +1,4 @@
-/* pages/exit/exit.wxss */
+.exit{
+  display: flex;
+  justify-content: center;
+}

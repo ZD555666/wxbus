@@ -24,9 +24,9 @@
         data-direction="{{item.direction}}" data-allwalk="{{item.allWalk}}" data-sameStation="{{item.sameStation}}"
         data-startDirection="{{item.startDirection}}" data-endDirection="{{item.endDirection}}"
         data-startBus="{{item.startBus}}"  data-endBus="{{item.endBus}}" data-middleWalk="{{item.middleWalk}}"
-        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}">
+        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}" data-allDate="{{item.allDate}}">
             <view class="v">
-              <text class="time">0分钟</text>
+              <text class="time">{{item.allDate}}分钟</text>
               <text class="walk" wx:if="{{item.startWalk != 0 || item.endWalk != 0}}">步行:{{item.allWalk}}米</text>
             </view>
           <view class="v1">{{item.momeyStation}}站 . {{item.startStation}}</view>
@@ -49,24 +49,30 @@
           </view>
           <view class="v3">
             <view class="t2">{{item.busNo}}</view>
-              <view class="t3">
+
+              <view class="t3" wx:if="{{item.planDate != null}}">
                 <van-icon name="volume-o" />
-                最近车辆: {{item.momeyStation}}站 | 0分钟
+                最近车辆: {{item.planStations}}站 | {{item.planDate}}
               </view>
+              <view class="t3" wx:if="{{item.planDate == null}}">
+                <van-icon name="volume-o" />
+                最近车辆: 等待首站发车...
+              </view>
+
           </view>
         </view>
       </van-tab>
       <van-tab title="时间最短">
-        <view class="panel" bindtap="goRoad" wx:for="{{roadPlan}}"
+        <view class="panel" bindtap="goRoad" wx:for="{{roadPlan}}" wx:if="{{item.lessTime == 'lessTime'}}"
         data-momeyStation="{{item.momeyStation}}" data-busNo="{{item.busNo}}"
         data-startWalk="{{item.startWalk}}" data-endWalk="{{item.endWalk}}" 
         data-startStation="{{item.startStation}}" data-endStation="{{item.endStation}}"
         data-direction="{{item.direction}}" data-allwalk="{{item.allWalk}}" data-sameStation="{{item.sameStation}}"
         data-startDirection="{{item.startDirection}}" data-endDirection="{{item.endDirection}}"
         data-startBus="{{item.startBus}}"  data-endBus="{{item.endBus}}" data-middleWalk="{{item.middleWalk}}"
-        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}">
+        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}" data-allDate="{{item.allDate}}">
             <view class="v">
-              <text class="time">0分钟</text>
+              <text class="time">{{item.allDate}}分钟</text>
               <text class="walk" wx:if="{{item.startWalk != 0 || item.endWalk != 0}}">步行:{{item.allWalk}}米</text>
             </view>
           <view class="v1">{{item.momeyStation}}站 . {{item.startStation}}</view>
@@ -89,10 +95,16 @@
           </view>
           <view class="v3">
             <view class="t2">{{item.busNo}}</view>
-              <view class="t3">
+
+              <view class="t3" wx:if="{{item.planDate != null}}">
                 <van-icon name="volume-o" />
-                最近车辆: {{item.momeyStation}}站 | 0分钟
+                最近车辆: {{item.planStations}}站 | {{item.planDate}}
               </view>
+              <view class="t3" wx:if="{{item.planDate == null}}">
+                <van-icon name="volume-o" />
+                最近车辆: 等待首站发车...
+              </view>
+
           </view>
         </view>
       </van-tab>
@@ -104,9 +116,10 @@
         data-direction="{{item.direction}}" data-allwalk="{{item.allWalk}}" data-sameStation="{{item.sameStation}}"
         data-startDirection="{{item.startDirection}}" data-endDirection="{{item.endDirection}}"
         data-startBus="{{item.startBus}}"  data-endBus="{{item.endBus}}" data-middleWalk="{{item.middleWalk}}"
-        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}">
+        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}"
+        data-allDate="{{item.allDate}}" >
             <view class="v">
-              <text class="time">0分钟</text>
+              <text class="time">{{item.allDate}}分钟</text>
               <text class="walk" wx:if="{{item.startWalk != 0 || item.endWalk != 0}}">步行:{{item.allWalk}}米</text>
             </view>
           <view class="v1">{{item.momeyStation}}站 . {{item.startStation}}</view>
@@ -129,24 +142,30 @@
           </view>
           <view class="v3">
             <view class="t2">{{item.busNo}}</view>
-              <view class="t3">
+
+              <view class="t3" wx:if="{{item.planDate != null}}">
                 <van-icon name="volume-o" />
-                最近车辆: {{item.momeyStation}}站 | 0分钟
+                最近车辆: {{item.planStations}}站 | {{item.planDate}}
               </view>
+              <view class="t3" wx:if="{{item.planDate == null}}">
+                <van-icon name="volume-o" />
+                最近车辆: 等待首站发车...
+              </view>
+
           </view>
         </view>
       </van-tab>
       <van-tab title="换乘少">
-        <view class="panel" bindtap="goRoad" wx:for="{{roadPlan}}" wx:if="{{itme.lessTurn == lessTurn}}"
+        <view class="panel" bindtap="goRoad" wx:for="{{roadPlan}}" wx:if="{{item.lessTurn == 'lessTurn'}}"
         data-momeyStation="{{item.momeyStation}}" data-busNo="{{item.busNo}}"
         data-startWalk="{{item.startWalk}}" data-endWalk="{{item.endWalk}}" 
         data-startStation="{{item.startStation}}" data-endStation="{{item.endStation}}"
         data-direction="{{item.direction}}" data-allwalk="{{item.allWalk}}" data-sameStation="{{item.sameStation}}"
         data-startDirection="{{item.startDirection}}" data-endDirection="{{item.endDirection}}"
         data-startBus="{{item.startBus}}"  data-endBus="{{item.endBus}}" data-middleWalk="{{item.middleWalk}}"
-        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}">
+        data-endTurn="{{item.endTurn}}" data-startTurn="{{item.startTurn}}" data-allDate="{{item.allDate}}">
             <view class="v">
-              <text class="time">0分钟</text>
+              <text class="time">{{item.allDate}}分钟</text>
               <text class="walk" wx:if="{{item.startWalk != 0 || item.endWalk != 0}}">步行:{{item.allWalk}}米</text>
             </view>
           <view class="v1">{{item.momeyStation}}站 . {{item.startStation}}</view>
@@ -169,10 +188,16 @@
           </view>
           <view class="v3">
             <view class="t2">{{item.busNo}}</view>
-              <view class="t3">
+
+              <view class="t3" wx:if="{{item.planDate != null}}">
                 <van-icon name="volume-o" />
-                最近车辆: {{item.momeyStation}}站 | 0分钟
+                最近车辆: {{item.planStations}}站 | {{item.planDate}}
               </view>
+              <view class="t3" wx:if="{{item.planDate == null}}">
+                <van-icon name="volume-o" />
+                最近车辆: 等待首站发车...
+              </view>
+
           </view>
         </view>
       </van-tab>

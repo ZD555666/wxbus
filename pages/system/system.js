@@ -1,11 +1,25 @@
-// pages/logs/logs.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    columns: ['70秒', '80秒', '90秒'],
+    showBar: false,
+    value: app.globalData.times/1000+"秒"
+  },
 
+  onConfirm(event) {
+    const { picker, value, index } = event.detail;
+    app.globalData.times = value == '70秒' ? 70000 : (value == '80秒' ? 80000 : 90000);
+    this.setData({value:value,showBar:false})
+
+  },
+
+  onCancel() {
+    this.setData({showBar:false})
+  },
+
+  toUpd(){
+    this.setData({showBar:true})
   },
 
   /**

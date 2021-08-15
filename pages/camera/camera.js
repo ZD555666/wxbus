@@ -98,10 +98,12 @@ Page({
 
   saveQr() {
     console.log(this.data.imagePath)
+    let that = this;
     wx.saveImageToPhotosAlbum({
       filePath: this.data.imagePath,
       success(res) {
         console.log(res)
+        that.scanCode();
       },
       fail(res) {
         console.log(res)
@@ -128,7 +130,7 @@ Page({
       })
     }
     this.reqScanCode();
-    this.scanCode();
+    
   },
 
   /**

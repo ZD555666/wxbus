@@ -120,7 +120,7 @@ Component({
           app.globalData.longitude = wxMarkerData[0].longitude,
           app.globalData.address = wxMarkerData[0].address,
           app.globalData.cityInfo = data.originalData.result.addressComponent
-        app.globalData.locationLatitude = wxMarkerData[0].latitude,
+          app.globalData.locationLatitude = wxMarkerData[0].latitude,
           app.globalData.locationLongitude = wxMarkerData[0].longitude,
           console.log(wxMarkerData[0].longitude)
         console.log(wxMarkerData[0].latitude)

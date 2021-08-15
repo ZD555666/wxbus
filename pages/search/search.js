@@ -23,7 +23,7 @@ Page({
     wx.navigateTo({
       url: '/pages/siteDetail/siteDetail?stationId=' + event.currentTarget.dataset.stationid +
         '&stationName=' + event.currentTarget.dataset.stationname + '&xPoint=' + event.currentTarget.dataset.xpoint +
-        '&yPoint=' + event.currentTarget.dataset.ypoint,
+        '&yPoint=' + event.currentTarget.dataset.ypoint + "&direction=" + 0,
     })
   },
 
@@ -38,7 +38,7 @@ Page({
       success: res => {
         console.log(res.data)
         this.setData({
-          wxHistories:[]
+          wxHistories: []
         })
       }
     })
@@ -46,7 +46,7 @@ Page({
 
   onClick(event) {
     this.putHistory(event.currentTarget.dataset.key, event.currentTarget.dataset.value);
-    wx.reLaunch({
+    wx.navigateTo({
       url: '/pages/road/road?title=' + event.currentTarget.dataset.value +
         '&direction=' + event.currentTarget.dataset.key,
     })
@@ -65,7 +65,7 @@ Page({
         _this.setData({
           stationData: reps.data,
         })
-        wx.reLaunch({
+        wx.navigateTo({
           url: '/pages/siteDetail/siteDetail?stationId=' + _this.data.stationData.stationId +
             '&stationName=' + _this.data.stationData.stationName + '&xPoint=' + _this.data.stationData.xpoint +
             '&yPoint=' + _this.data.stationData.ypoint,
@@ -76,7 +76,7 @@ Page({
 
   },
   onSearch(event) {
-    console.log("===>>>"+event.detail)
+    console.log("===>>>" + event.detail)
     var _this = this;
     _this.data.roadList = {};
     wx.request({

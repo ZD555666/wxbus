@@ -7,11 +7,11 @@
     <van-cell wx:if="{{filters.toFix(item.distanceTime)<30}}" bind:click="toRoad" center is-link icon="map-marked"
       title="{{item.busNo}} {{item.licensePlate}}" label="方向 {{item.endStation}}"
       value="{{item.surplusStation}}站 / {{filters.toFix(item.distanceTime)}}分钟 / {{filters.toFix(item.distance)}}m"
-      data-busNo="{{item.busNo}}" data-endStation="{{item.endStation}}" />
+      data-busNo="{{item.busNo}}" data-endStation="{{item.endStation}}" bindlongpress="longpress" bindtouchstart="touchStart" bindtouchend="touchEnd"/>
     <van-cell wx:else bind:click="toRoad" center is-link icon="map-marked"
       title="{{item.busNo}} {{item.licensePlate}}" label="方向 {{item.endStation}}"
       value="{{item.surplusStation}}站 / 等待发车 / {{filters.toFix(item.distance)}}m"
-      data-busNo="{{item.busNo}}" data-endStation="{{item.endStation}}" />
+      data-busNo="{{item.busNo}}" data-endStation="{{item.endStation}}" bindlongpress="longpress" bindtouchstart="touchStart" bindtouchend="touchEnd"/>
   </block>
 </van-cell-group>
 <van-collapse value="{{ activeNames }}" bind:change="onChange">

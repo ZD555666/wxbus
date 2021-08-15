@@ -19,7 +19,11 @@ Page({
     checked: true,
     direction: '',
     timers: '',
-    time: 500
+    time: 500,
+    touchStartTime: 0,
+    touchEndTime: 0,
+    lastTapTime: 0,
+    lastTapTimeoutFunc: null
   },
 
   changeDirection({ detail }) {
@@ -47,10 +51,10 @@ Page({
     var that = this;
     this.data.timers = setInterval(function () {
       that.queryDetailFun()
-    }, 70000);
+    }, app.globalData.times);
   },
 
-  queryDetailFun(){
+  queryDetailFun() {
     wx.request({
       url: app.globalData.prefix + '/wx/queryDetail',
       method: 'POST',
@@ -105,6 +109,21 @@ Page({
     })
   },
 
+  touchStart: function (e) {
+    this.touchStartTime = e.timeStamp
+  },
+
+  touchEnd: function (e) {
+    this.touchEndTime = e.timeStamp
+  },
+
+  longpress: function (e) {
+    console.log(e, this.data.direction,this.data.stationXpoint)
+    wx.navigateTo({
+      url: '/pages/map/map?busNo=' + e.currentTarget.dataset.busno + "&direction=" + this.data.direction + "&xPoint=" + this.data.stationXpoint + "&yPoint=" + this.data.stationYpoint,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -126,8 +145,8 @@ Page({
           id: 0,
           longitude: options.xPoint,
           latitude: options.yPoint,
-          wigth: "15px",
-          height: "33px"
+          width: "25px",
+          height: "32px"
         }
       ],
     })

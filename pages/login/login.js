@@ -10,6 +10,8 @@ Page({
     loading:false
   },
 
+
+
   getUserInfo(e) {
     console.log(e.detail);
   },

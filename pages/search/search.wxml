@@ -12,8 +12,8 @@
         <van-cell wx:if="{{item.busNo!=null}}" title="{{item.busNo}} 开往 {{item.endStation}}" clickable
           bind:click="toRoad" data-busNo="{{item.busNo}}" data-endStation="{{item.endStation}}" />
         <van-cell wx:else title="{{item.stationName}}" clickable bind:click="toSiteDetail"
-          data-stationId="{{item.stationId}}" data-stationName="{{item.stationName}}" data-xPoint="{{item.xPoint}}"
-          data-yPoint="{{item.yPoint}}" />
+          data-stationId="{{item.stationId}}" data-stationName="{{item.stationName}}" data-xPoint="{{item.xpoint}}"
+          data-yPoint="{{item.ypoint}}" />
       </block>
     </van-cell-group>
   </view>

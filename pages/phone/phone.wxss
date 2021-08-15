@@ -1,1 +1,4 @@
-/* pages/phone/phone.wxss */
+.btn-center{
+  display: flex;
+  justify-content: center;
+}

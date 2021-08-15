@@ -1,36 +1,14 @@
 var app = getApp()
 Component({
-  pageLifetimes: {
-    show() {
-      this.getTabBar().setData({
-        active: 2
-      });
-      wx.request({
-        url: app.globalData.zmyIp+'/wx/getNews',
-        data: {
-          param: 1
-        },
-        success: reps => {
-          console.log(reps.data)
-          this.setData({
-            dataList: reps.data
-          })
-        }
-      })
-    }
-  },
-  data: {
-    dataList: []
-  },
-  methods: {
-
-  },
   data: {
     dataList:[],
     page:1,
   },
   pageLifetimes: {
     show: function() {
+      this.getTabBar().setData({
+        active: 2
+      });
       if(this.data.page == 1){
         wx.showLoading({
           title: '加载中',
@@ -38,7 +16,10 @@ Component({
       }
       var _this = this;
       // 页面被展示
-      _this.onRequest();
+      if(new Date().toTimeString().substring(0,2)!=13){
+        _this.onRequest();
+
+      }
     },
     hide: function() {
       // 页面被隐藏

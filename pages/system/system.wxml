@@ -1,0 +1,12 @@
+<van-cell-group inset>
+  <van-cell title="修改公交刷新频率" value="{{value}}"clickable is-link bind:click="toUpd"/>
+</van-cell-group>
+<view class="bottom">
+  <van-picker
+  show-toolbar="{{showBar}}"
+  title="   公交刷新频率   "
+  columns="{{ columns }}"
+  bind:cancel="onCancel"
+  bind:confirm="onConfirm"
+/>
+</view>

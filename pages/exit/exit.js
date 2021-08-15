@@ -10,6 +10,9 @@ Page({
 
   exit(){
     wx.clearStorageSync("loginInfo")
+    wx.switchTab({
+      url: '/pages/me/me',
+    })
   },
 
   /**

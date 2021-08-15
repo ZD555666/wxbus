@@ -1,0 +1,4 @@
+<view class="map_container">
+  <map class="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="13"
+    show-location="true" markers="{{markers}}" bindmarkertap="makertap" data-title="{{markers}}" ></map>
+</view>

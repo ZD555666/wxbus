@@ -20,8 +20,8 @@ App({
     cityInfo: '',
     userInfo: null,
     nowCity: '',
-    prefix: 'http://localhost:8080',
-    // prefix: 'https://www.mystudy365.cn',
+    // prefix: 'http://localhost:8080',
+    prefix: 'https://www.mystudy365.cn',
     // prefix: 'http://192.168.31.49:8080',
     // prefix: 'http://192.168.236.211:8080',
     toWhereType:'2',
@@ -34,5 +34,6 @@ App({
     speed:'',
     zmyIp:'http://localhost:8080',
     // zmyIp:'https://www.mystudy365.cn'
+    times:'70000'
   },
 })

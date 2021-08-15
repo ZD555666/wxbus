@@ -3,7 +3,7 @@
 <block wx:if="{{isPayOk!=''}}">
   <button class="okbtn" bindtap='ok'>完成</button>
   <view class="head">
-    <van-image class="headImg" round width="4rem" height="4rem" src="/images/bus.ico" />
+    <van-image class="headImg" round width="4rem" height="4rem" src="/images/logo.jpeg" />
     <text style="color:#1989fa;margin:5px;font-size:18px">{{isPayOk}}</text>
     <text style="font-size:30px;font-weight:bold">{{isPayOk=='支付成功'?'￥1.00元':''}}</text>
   </view>

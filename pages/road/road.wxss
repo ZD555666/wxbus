@@ -30,6 +30,11 @@ page{
   font-size: 20px;
   color: rgb(231, 144, 103);
 }
+.vv3{
+  margin-top: 15px;
+  font-size: 18px;
+  color: rgb(231, 144, 103);
+}
 .v4{
   font-size: 15px;
 }
@@ -82,8 +87,8 @@ page{
   height: 40px;
   width: 40px;
   position:absolute;
-  top: -5px;
-  left: 50px;
+  top: -7px;
+  left: 15px;
 }
 .number0{
   position:absolute;
@@ -103,4 +108,7 @@ page{
 .area{
   margin-left: 50px;
   width: 15px;
+}
+.tee{
+  color: rgb(241, 128, 53);
 }

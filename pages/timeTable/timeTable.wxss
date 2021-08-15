@@ -17,10 +17,8 @@ page{
   font-size: 14px;
 }
 .time{
-  position:absolute;
-  top: 8.7%;
-  left: 3%;
-  padding-bottom: 20px;
+  padding-top: 7px;
+  margin-left: 15px;
   color: white;
   font-size: 15px;
 }

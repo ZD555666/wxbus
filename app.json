@@ -8,7 +8,6 @@
     "pages/history/history",
     "pages/me/me",
     "pages/login/login",
-    "pages/logs/logs",
     "pages/exit/exit",
     "pages/phone/phone",
     "pages/myinfo/myinfo",
@@ -22,7 +21,9 @@
     "pages/road/road",
     "pages/timeTable/timeTable",
     "pages/searchStation/searchStation",
-    "pages/collect/collect"
+    "pages/collect/collect",
+    "pages/map/map",
+    "pages/system/system"
   ],
   "window": {
     "backgroundTextStyle": "light",
