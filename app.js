@@ -32,8 +32,8 @@ App({
     toWhereLatitude:'',
     toWhereLongitude:'',
     speed:'',
-    zmyIp:'http://localhost:8080',
-    // zmyIp:'https://www.mystudy365.cn'
+    // zmyIp:'http://localhost:8080',
+    zmyIp:'https://www.mystudy365.cn',
     times:'70000'
   },
 })
